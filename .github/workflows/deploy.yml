@@ -10,7 +10,7 @@ jobs:
       - name: Checkout 🛎️
         uses: actions/checkout@v4
 
-      - name: Install and Build 🔧 # This example project is built using npm and outputs the result to the 'build' folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.
+      - name: Install and Build 🔧
         run: |
           npm ci
           npm run build
@@ -18,4 +18,7 @@ jobs:
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: build # The folder the 
+          folder: build # This should match the output folder from your build step
+          branch: gh-pages # The branch to which the site will be deployed
+          clean: true # Optionally clean the target branch before deploying
+          token: ${{ secrets.GITHUB_TOKEN }} # Use the GitHub token to authorize the deployment

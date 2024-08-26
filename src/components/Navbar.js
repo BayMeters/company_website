@@ -24,12 +24,12 @@ import { ChevronDownIcon, ChevronRightIcon } from '@heroicons/react/20/solid'
 
 // Navigation items
 const products = [
-  { name: 'Flowmeter', description: 'Get a better understanding of your traffic', href: '#', icon: ChartPieIcon },
-  { name: 'Liquid analysis', description: 'Speak directly to your customers', href: '#', icon: CursorArrowRaysIcon },
-  { name: 'Level', description: 'Your customers data will be safe and secure', href: '#', icon: FingerPrintIcon },
-  { name: 'Pressure', description: 'Connect with third-party tools', href: '#', icon: SquaresPlusIcon },
-  { name: 'System products', description: 'Build strategic funnels that will convert', href: '#', icon: ArrowPathIcon },
-  { name: 'Temperature', description: 'Your customers data will be safe and secure', href: '#', icon: FingerPrintIcon },
+  { name: 'Flowmeter', description: 'Get a better understanding of your traffic', href: '/', icon: ChartPieIcon },
+  { name: 'Liquid analysis', description: 'Speak directly to your customers', href: '/', icon: CursorArrowRaysIcon },
+  { name: 'Level', description: 'Your customers data will be safe and secure', href: '/', icon: FingerPrintIcon },
+  { name: 'Pressure', description: 'Connect with third-party tools', href: '/', icon: SquaresPlusIcon },
+  { name: 'System products', description: 'Build strategic funnels that will convert', href: '/', icon: ArrowPathIcon },
+  { name: 'Temperature', description: 'Your customers data will be safe and secure', href: '/', icon: FingerPrintIcon },
 ]
 
 const industries = [
@@ -156,7 +156,7 @@ export default function Navbar() {
         
 
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <a href="#" className="text-medium font-normal leading-6 text-white p-2 px-4 bg-teal-900 hover:bg-teal-600 rounded-sm">Contact Us</a>
+          <a href="/" className="text-medium font-normal leading-6 text-white p-2 px-4 bg-teal-900 hover:bg-teal-600 rounded-sm">Contact Us</a>
         </div>
       </nav>
 
@@ -204,7 +204,7 @@ export default function Navbar() {
                   )}
                 </Disclosure>
                 <a
-                  href="#"
+                  href="/"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Industries
@@ -218,7 +218,7 @@ export default function Navbar() {
               </div>
               <div className="py-6">
                 <a
-                  href="#"
+                  href="/"
                   className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Contact Us

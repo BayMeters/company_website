@@ -14,6 +14,12 @@ jobs:
         run: |
           npm ci
           npm run build
+          
+      - name: Build with Jekyll
+        uses: actions/jekyll-build-pages@v1
+        with:
+            source: '.'
+            destination: './_site'
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
@@ -22,3 +28,4 @@ jobs:
           branch: gh-pages # The branch to which the site will be deployed
           clean: true # Optionally clean the target branch before deploying
           token: ${{ secrets.GITHUB_TOKEN }} # Use the GitHub token to authorize the deployment
+    

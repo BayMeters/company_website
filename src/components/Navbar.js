@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import {
   Dialog,
   DialogPanel,
@@ -20,7 +20,7 @@ import {
   SquaresPlusIcon,
   XMarkIcon,
 } from '@heroicons/react/24/outline'
-import { ChevronDownIcon, ChevronRightIcon } from '@heroicons/react/20/solid'
+import { ChevronDownIcon } from '@heroicons/react/20/solid'
 
 // Navigation items
 const products = [
@@ -32,11 +32,11 @@ const products = [
   { name: 'Temperature', description: 'Your customers data will be safe and secure', href: '/', icon: FingerPrintIcon },
 ]
 
-const industries = [
-  "Water & Wastewater",
-  "Agriculture",
-  "Food & Beverage"
-];
+// const industries = [
+//   "Water & Wastewater",
+//   "Agriculture",
+//   "Food & Beverage"
+// ];
 
 // Logo component
 const BayMetersLogo = () => (

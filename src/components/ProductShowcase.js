@@ -3,9 +3,8 @@ import { ArrowRight } from 'lucide-react';
 
 const industries = [
   "Water & Wastewater",
-  "Food & Beverage",
-  "Pulp & Paper",
-  "Mining & Others"
+  "Agriculture",
+  "Food & Beverage"
 ];
 
 const products = [
@@ -30,7 +29,7 @@ const products = [
 ];
 
 const ProductCard = ({ product }) => (
-  <div className="bg-white p-4 rounded-lg border border-teal-200 cursor-pointer hover:shadow-xl">
+  <div className="bg-white p-4 rounded-sm border border-teal-200 cursor-pointer hover:shadow-xl">
     <img src={product.image} alt={product.name} className="w-full h-32 object-contain mb-4" />
     <h3 className="text-xl font-normal text-teal-900 mb-2">{product.name}</h3>
     <p className="text-sm text-teal-900 mb-4 font-extralight">{product.description}</p>
@@ -39,7 +38,7 @@ const ProductCard = ({ product }) => (
 );
 
 const ViewMoreButton = ({ className }) => (
-  <button className={`${className} gap-10 flex justify-between text-left bg-white p-4 rounded-lg hover:border border-teal-200 hover:shadow-lg`}>
+  <a href='/products' className={`${className} gap-10 flex justify-between text-left cursor-pointer bg-white p-4 rounded-sm hover:border border-teal-200 hover:shadow-lg`}>
     {/* <h3 className="pt-1 text-xl font-anek text-green-50 mb-2">View more products</h3> */}
     <div>
       <h2 className="text-xl font-normal text-teal-900 mb-2">More products...</h2>
@@ -47,7 +46,7 @@ const ViewMoreButton = ({ className }) => (
     </div>
     <div> <ArrowRight className="text-teal-500" size={24} /></div>
     
-  </button>
+  </a>
 );
 
 
@@ -64,7 +63,7 @@ const ProductShowcase = () => {
             className={`px-1 py-2 whitespace-nowrap relative font-extralight text-lg transition duration-300 ease-in-out group ${
               activeTab === industry
                 ? 'text-teal-950'
-                : 'text-teal-900 hover:text-teal-950'
+                : 'text-teal-700 hover:text-teal-950'
             }`}
             onClick={() => setActiveTab(industry)}
           >

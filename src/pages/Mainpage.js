@@ -9,10 +9,10 @@ const WebsiteLayout = () => {
     <div className="flex flex-col min-h-screen">
       <Navbar />
       <main className="flex-grow">
-        <div className="container mx-auto p-4 pt-10">
+        <div className="container mx-auto">
           <PartnershipSection />
         </div>
-        {/* <hr className="border-t border-gray-300 my-8" /> */}
+        {/* <hr className="border-t border-gray-300 " /> */}
         <div className="container mx-auto p-4">
           <ProductShowcase />
         </div>

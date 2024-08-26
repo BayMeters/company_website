@@ -32,11 +32,11 @@ const products = [
   { name: 'Temperature', description: 'Your customers data will be safe and secure', href: '/', icon: FingerPrintIcon },
 ]
 
-// const industries = [
-//   "Water & Wastewater",
-//   "Agriculture",
-//   "Food & Beverage"
-// ];
+const industries = [
+  { name: 'Water & Wastewater', description: 'Get a better understanding of your traffic', href: '/', icon: ChartPieIcon },
+  { name: 'Agriculture', description: 'Speak directly to your customers', href: '/', icon: CursorArrowRaysIcon },
+  { name: 'Food & Beverage', description: 'Your customers data will be safe and secure', href: '/', icon: FingerPrintIcon },
+]
 
 // Logo component
 const BayMetersLogo = () => (
@@ -93,7 +93,7 @@ export default function Navbar() {
                         {item.name}
                         <span className="absolute inset-0" />
                       </a>
-                      {/* <p className="mt-1 text-gray-600">{item.description}</p> */}
+                      <p className="mt-1 text-gray-600">{item.description}</p>
                     </div>
                   </div>
                 ))}
@@ -111,14 +111,14 @@ export default function Navbar() {
               className="absolute rounded-md left-[calc(25%)] z-50 top-[calc(100%)] w-screen max-w-md overflow-hidden bg-white shadow-2xl transition data-[closed]:translate-y-1 data-[closed]:opacity-0 data-[enter]:duration-200 data-[leave]:duration-150 data-[enter]:ease-out data-[leave]:ease-in"
             >
               <div className="p-4">
-                {products.map((item) => (
+                {industries.map((item) => (
                   <div
                     key={item.name}
                     className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50"
                   >
-                    <div className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
+                    {/* <div className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
                       <item.icon aria-hidden="true" className="h-6 w-6 text-gray-600 group-hover:text-green-50" />
-                    </div>
+                    </div> */}
                     <div className="flex-auto">
                       <a href={item.href} className="block font-semibold text-gray-900">
                         {item.name}

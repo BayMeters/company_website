@@ -156,7 +156,7 @@ export default function Navbar() {
         
 
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <a href="/" className="text-medium font-normal leading-6 text-white p-2 px-4 bg-teal-900 hover:bg-teal-600 rounded-sm">Contact Us</a>
+          <a href="/contact" className="text-medium font-normal leading-6 text-white p-2 px-4 bg-teal-900 hover:bg-teal-600 rounded-sm">Contact Us</a>
         </div>
       </nav>
 

@@ -39,7 +39,7 @@ const Footer = () => {
                 </p>
                 <div class="flex gap-4 hover:cursor-pointer">
                     <img src="https://www.svgrepo.com/show/343567/linkedin-network-communication-connection-internet-online.svg" width="31" height="31" alt="in"/>
-                    <img src="https://www.svgrepo.com/show/475647/facebook-color.svg" width="30" height="30" alt="fb" />
+                    <img src="https://www.svgrepo.com/show/475647/facebook-color.svg" width="30" height="30" alt="fb"  />
                 </div>
             </div>
 
@@ -49,7 +49,7 @@ const Footer = () => {
                 <div class="flex flex-col items-start mt-5 space-y-2">
                     <a href="/" class="text-teal-800 transition-colors duration-300 hover:underline">Home</a>
                     <a href="/about" class="text-teal-800 transition-colors duration-300 hover:underline">About</a>
-                    {/* <p class="text-teal-800 transition-colors duration-300 hover:underline">Our Philosophy</p> */}
+                    <a href='/contact' class="text-teal-800 transition-colors duration-300 hover:underline">Contact</a>
                 </div>
             </div>
 
@@ -95,7 +95,7 @@ const Footer = () => {
                 <img src="https://www.svgrepo.com/show/22048/dribbble.svg" class="" width="30" height="30" alt="db" />
             </div> */}
         </div>
-        <p class="text-teal-800 font-light text-center md:text-lg pt-8">© 2024 BayMeters LLC. All rights reserved.</p>
+        <p class="text-teal-800 font-light text-center md:text-lg pt-10">© 2024 BayMeters LLC. All rights reserved.</p>
     </div>
 </footer>
   );

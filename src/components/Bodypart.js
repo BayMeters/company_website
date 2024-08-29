@@ -3,7 +3,7 @@ import GoldenBridge from '../Assets/image.png';
 
 const PartnershipSection = () => {
   return (
-    <section className="flex flex-col lg:flex-row items-center justify-between mx-auto px-0 py-8 gap-20">
+    <div className="flex flex-col lg:flex-row items-center justify-between mx-auto px-10 py-10 gap-20">
 
       <div className="flex-1 max-w-xl">
 
@@ -44,11 +44,10 @@ const PartnershipSection = () => {
 
       <div className="flex-1">
         <img className="w-full h-full lg:block hidden" 
-            src={GoldenBridge} alt="Water" 
-        />
-    </div>
+            src={GoldenBridge} alt="Water"/>
+      </div>  
 
-    </section>
+    </div>
   );
 };
 

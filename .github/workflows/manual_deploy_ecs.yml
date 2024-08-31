@@ -1,41 +1,62 @@
-name: Manual Deployment Workflow
+name: Manual ECS Deployment
 
-# This workflow will only run when manually triggered via the GitHub Actions interface
 on:
   workflow_dispatch:
     inputs:
-      environment:
-        description: 'Environment to deploy to (e.g., staging, production)'
-        required: true
-        default: 'staging'
       image_tag:
-        description: 'Tag of the image to deploy'
+        description: 'ECR Image tag to deploy (e.g., 1a2b3c4)'
         required: true
-        default: 'latest'
+        type: string
+
+env:
+  AWS_REGION: us-east-1
+  ECR_REGISTRY: 515308131221.dkr.ecr.us-east-1.amazonaws.com
+  ECR_REPOSITORY: baymeters/company_website
+  ECS_CLUSTER: arn:aws:ecs:us-east-1:515308131221:cluster/company_website_runner
+  ECS_SERVICE: arn:aws:ecs:us-east-1:515308131221:service/company_website_runner/website-runner-service
+  ECS_TASK_DEFINITION: website-runner:2
 
 jobs:
-  deploy:
+  deploy-to-ecs:
+    name: Deploy to ECS
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
 
-      - name: Log in to Amazon ECR
-        id: ecr_login
-        uses: aws-actions/amazon-ecr-login@v2
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
         with:
-          region: ${{ secrets.AWS_REGION }}
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
+
+      - name: Download task definition
+        run: |
+          aws ecs describe-task-definition --task-definition ${{ env.ECS_TASK_DEFINITION }} --query taskDefinition > task-definition.json
+
+      - name: Update ECS task definition with new image
+        id: task-def
+        uses: aws-actions/amazon-ecs-render-task-definition@v1
+        with:
+          task-definition: task-definition.json
+          container-name: web-container
+          image: ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ github.event.inputs.image_tag }}
 
       - name: Deploy to Amazon ECS
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+        with:
+          task-definition: ${{ steps.task-def.outputs.task-definition }}
+          service: ${{ env.ECS_SERVICE }}
+          cluster: ${{ env.ECS_CLUSTER }}
+          wait-for-service-stability: true
+
+      - name: Print deployment info
         run: |
-          echo "Deploying to environment: ${{ github.event.inputs.environment }}"
-          echo "Deploying image tag: ${{ github.event.inputs.image_tag }}"
-          # Here you would add the command to deploy the specific image tag to ECS
-          # For example, using AWS CLI:
-          aws ecs update-service \
-            --cluster ${{ secrets.ECS_CLUSTER }} \
-            --service ${{ secrets.ECS_SERVICE }} \
-            --force-new-deployment \
-            --region ${{ secrets.AWS_REGION }} \
-            --task-definition ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/${{ secrets.ECR_REPOSITORY }}:${{ github.event.inputs.image_tag }}
+          echo "Deployed image ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ github.event.inputs.image_tag }} to ECS"
+          echo "Cluster: ${{ env.ECS_CLUSTER }}"
+          echo "Service: ${{ env.ECS_SERVICE }}"

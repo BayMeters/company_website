@@ -1,4 +1,4 @@
-name: Manual ECS Deployment
+name: Update ECS Service Container Image
 
 on:
   workflow_dispatch:
@@ -12,18 +12,15 @@ env:
   AWS_REGION: us-east-1
   ECR_REGISTRY: 515308131221.dkr.ecr.us-east-1.amazonaws.com
   ECR_REPOSITORY: baymeters/company_website
-  ECS_CLUSTER: arn:aws:ecs:us-east-1:515308131221:cluster/company_website_runner
-  ECS_SERVICE: arn:aws:ecs:us-east-1:515308131221:service/company_website_runner/website-runner-service
-  ECS_TASK_DEFINITION: website-runner:2
+  ECS_CLUSTER: company_website_runner
+  ECS_SERVICE: website-runner-service
+  CONTAINER_NAME: web-container
 
 jobs:
-  deploy-to-ecs:
-    name: Deploy to ECS
+  update-ecs-service:
+    name: Update ECS Service
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -31,32 +28,37 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_REGION }}
 
-      - name: Login to Amazon ECR
-        id: login-ecr
-        uses: aws-actions/amazon-ecr-login@v1
-
-      - name: Download task definition
+      - name: Update ECS service with new image
         run: |
-          aws ecs describe-task-definition --task-definition ${{ env.ECS_TASK_DEFINITION }} --query taskDefinition > task-definition.json
+          NEW_IMAGE="${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ github.event.inputs.image_tag }}"
+          
+          # Get current task definition
+          TASK_DEFINITION=$(aws ecs describe-task-definition \
+            --task-definition $(aws ecs describe-services \
+              --cluster ${{ env.ECS_CLUSTER }} \
+              --services ${{ env.ECS_SERVICE }} \
+              --query 'services[0].taskDefinition' \
+              --output text) \
+            --query 'taskDefinition')
 
-      - name: Update ECS task definition with new image
-        id: task-def
-        uses: aws-actions/amazon-ecs-render-task-definition@v1
-        with:
-          task-definition: task-definition.json
-          container-name: web-container
-          image: ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ github.event.inputs.image_tag }}
+          # Update the image in the task definition
+          NEW_TASK_DEFINITION=$(echo $TASK_DEFINITION | jq --arg IMAGE "$NEW_IMAGE" --arg NAME "${{ env.CONTAINER_NAME }}" \
+            '.containerDefinitions |= map(if .name == $NAME then .image = $IMAGE else . end)')
 
-      - name: Deploy to Amazon ECS
-        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
-        with:
-          task-definition: ${{ steps.task-def.outputs.task-definition }}
-          service: ${{ env.ECS_SERVICE }}
-          cluster: ${{ env.ECS_CLUSTER }}
-          wait-for-service-stability: true
+          # Update the service
+          aws ecs update-service \
+            --cluster ${{ env.ECS_CLUSTER }} \
+            --service ${{ env.ECS_SERVICE }} \
+            --task-definition <(echo $NEW_TASK_DEFINITION | jq '.') \
+            --force-new-deployment
+
+      - name: Wait for service stability
+        run: |
+          aws ecs wait services-stable \
+            --cluster ${{ env.ECS_CLUSTER }} \
+            --services ${{ env.ECS_SERVICE }}
 
       - name: Print deployment info
         run: |
-          echo "Deployed image ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ github.event.inputs.image_tag }} to ECS"
-          echo "Cluster: ${{ env.ECS_CLUSTER }}"
-          echo "Service: ${{ env.ECS_SERVICE }}"
+          echo "Updated service ${{ env.ECS_SERVICE }} in cluster ${{ env.ECS_CLUSTER }}"
+          echo "New image: ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ github.event.inputs.image_tag }}"

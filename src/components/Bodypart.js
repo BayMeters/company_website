@@ -7,8 +7,7 @@ const PartnershipSection = () => {
 
       <div className="flex-1 max-w-xl">
 
-        <h2 className="text-6xl text-teal-950 font-anek font-medium mb-16 lg:mb-24">Your Best Value in<br/>
-          Process Automation
+        <h2 className="text-6xl text-teal-950 font-anek font-medium mb-16 lg:mb-20">Your Best Value in Process Automation
         </h2>
 
         <p className="text-4xl text-green-50 text-wrap:pretty font-anek font-medium ">

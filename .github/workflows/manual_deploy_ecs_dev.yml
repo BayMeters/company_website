@@ -43,7 +43,7 @@ jobs:
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
           task-definition: task-definition.json
-          container-name: web-container
+          container-name: baymeter-website-container
           image: ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ github.event.inputs.image_tag }}
 
       - name: Deploy to Amazon ECS

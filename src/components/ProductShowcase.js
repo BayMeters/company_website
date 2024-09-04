@@ -67,7 +67,6 @@ const ViewMoreButton = ({ className }) => (
 
 const ProductShowcase = () => {
   const [activeTab, setActiveTab] = useState(industries[0]);
-  const [ThreeOrMore, setThreeOrMore] = useState(true)
 
   const filteredProducts = products.filter(product => product.categories.includes(activeTab));
 

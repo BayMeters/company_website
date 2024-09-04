@@ -35,7 +35,7 @@ const Footer = () => {
                     Corporate Commons<br/>
                     6200 Stoneridge Mall Road, 3rd Floor<br/>
                     Pleasanton, CA 94568<br/>
-                    971 895-0266
+                    866 305-7799
                 </p>
                 <div class="flex gap-4 hover:cursor-pointer">
                     <img src="https://www.svgrepo.com/show/343567/linkedin-network-communication-connection-internet-online.svg" width="31" height="31" alt="in"/>

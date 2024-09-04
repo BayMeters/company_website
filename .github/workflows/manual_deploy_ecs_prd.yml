@@ -1,4 +1,4 @@
-name: Update ECS Service Container Image
+name: Manual ECS Deployment PRD
 
 on:
   workflow_dispatch:

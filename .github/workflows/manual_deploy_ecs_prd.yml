@@ -1,4 +1,4 @@
-name: Manual ECS Deployment PRD
+name: Manual ECS Deployment DEV
 
 on:
   workflow_dispatch:
@@ -13,7 +13,7 @@ env:
   ECR_REGISTRY: 515308131221.dkr.ecr.us-east-1.amazonaws.com
   ECR_REPOSITORY: baymeters/company_website
   ECS_CLUSTER: arn:aws:ecs:us-east-1:515308131221:cluster/company_website_runner
-  ECS_SERVICE: arn:aws:ecs:us-east-1:515308131221:service/company_website_runner/website-runner-service-prd
+  ECS_SERVICE: arn:aws:ecs:us-east-1:515308131221:service/company_website_runner/website-runner-service-dev
   CONTAINER_NAME: baymeter-website-container
   
 jobs:
@@ -28,28 +28,45 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_REGION }}
 
-      - name: Update ECS service with new image
+      - name: Get current task definition ARN
+        id: get_task_def
+        run: |
+          ECS_TASK_DEF_ARN=$(aws ecs describe-services \
+            --cluster ${{ env.ECS_CLUSTER }} \
+            --services ${{ env.ECS_SERVICE }} \
+            --query 'services[0].taskDefinition' \
+            --output text)
+          echo "TASK_DEF_ARN=${ECS_TASK_DEF_ARN}" >> $GITHUB_ENV
+
+      - name: Get current task definition JSON
+        id: get_task_def_json
+        run: |
+          aws ecs describe-task-definition \
+            --task-definition "${{ env.TASK_DEF_ARN }}" \
+            --query 'taskDefinition' > task-definition.json
+
+      - name: Update task definition with new image
+        id: update_task_def
         run: |
           NEW_IMAGE="${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ github.event.inputs.image_tag }}"
-          
-          # Get current task definition
-          TASK_DEFINITION=$(aws ecs describe-task-definition \
-            --task-definition $(aws ecs describe-services \
-              --cluster ${{ env.ECS_CLUSTER }} \
-              --services ${{ env.ECS_SERVICE }} \
-              --query 'services[0].taskDefinition' \
-              --output text) \
-            --query 'taskDefinition')
+          cat task-definition.json | jq --arg IMAGE "$NEW_IMAGE" --arg NAME "${{ env.CONTAINER_NAME }}" \
+            '.containerDefinitions |= map(if .name == $NAME then .image = $IMAGE else . end) | del(.taskDefinitionArn)' > new-task-definition.json
 
-          # Update the image in the task definition
-          NEW_TASK_DEFINITION=$(echo $TASK_DEFINITION | jq --arg IMAGE "$NEW_IMAGE" --arg NAME "${{ env.CONTAINER_NAME }}" \
-            '.containerDefinitions |= map(if .name == $NAME then .image = $IMAGE else . end)')
+      - name: Register new task definition
+        id: register_task_def
+        run: |
+          NEW_TASK_DEF_ARN=$(aws ecs register-task-definition \
+            --cli-input-json file://new-task-definition.json \
+            --query 'taskDefinition.taskDefinitionArn' \
+            --output text)
+          echo "NEW_TASK_DEF_ARN=${NEW_TASK_DEF_ARN}" >> $GITHUB_ENV
 
-          # Update the service
+      - name: Update ECS service to use new task definition
+        run: |
           aws ecs update-service \
             --cluster ${{ env.ECS_CLUSTER }} \
             --service ${{ env.ECS_SERVICE }} \
-            --task-definition <(echo $NEW_TASK_DEFINITION | jq '.') \
+            --task-definition "${{ env.NEW_TASK_DEF_ARN }}" \
             --force-new-deployment
 
       - name: Wait for service stability

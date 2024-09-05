@@ -1,19 +1,23 @@
 # Stage 1: Build the React app
-FROM node:19.7 AS build
+FROM node:18.17.1 AS build
 WORKDIR /app
+
+# Install latest npm version
+RUN npm install -g npm@latest
 
 # Copy package files
 COPY package.json package-lock.json ./
 
-# Configure npm
+# Configure npm for better network resilience
 RUN npm config set registry https://registry.npmjs.org/ \
-    && npm config set fetch-retries 3 \
-    && npm config set fetch-retry-factor 2 \
-    && npm config set fetch-retry-mintimeout 10000 \
-    && npm config set fetch-retry-maxtimeout 60000
+    && npm config set fetch-retries 5 \
+    && npm config set fetch-retry-factor 5 \
+    && npm config set fetch-retry-mintimeout 20000 \
+    && npm config set fetch-retry-maxtimeout 120000 \
+    && npm config set timeout 60000
 
 # Install dependencies
-RUN npm cache clean --force && npm ci --loglevel verbose
+RUN npm ci --prefer-offline --no-audit
 
 # Copy the rest of the application code
 COPY . ./

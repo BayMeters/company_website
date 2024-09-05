@@ -1,5 +1,5 @@
 # Stage 1: Build the React app
-FROM node:18.17.1 AS build
+FROM node:19.7 AS build
 WORKDIR /app
 
 # Copy package files

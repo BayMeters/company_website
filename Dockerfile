@@ -2,8 +2,7 @@
 FROM node:18 AS build
 WORKDIR /app
 COPY package.json package-lock.json ./
-RUN npm config set registry http://registry.npmjs.org/
-RUN npm ci
+RUN npm cache clean --force && npm ci
 COPY . ./
 RUN npm run build
 

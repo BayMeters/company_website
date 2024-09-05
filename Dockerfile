@@ -7,7 +7,6 @@ COPY package.json package-lock.json ./
 
 # Configure npm
 RUN npm config set registry https://registry.npmjs.org/ \
-    && npm config set timeout 60000 \
     && npm config set fetch-retries 3 \
     && npm config set fetch-retry-factor 2 \
     && npm config set fetch-retry-mintimeout 10000 \

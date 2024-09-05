@@ -2,27 +2,22 @@
 FROM node:18.17.1 AS build
 WORKDIR /app
 
-# Install latest npm version
-RUN npm install -g npm@latest
-
 # Copy package files
-COPY package.json package-lock.json ./
+COPY package.json yarn.lock ./
 
-# Configure npm for better network resilience
-RUN npm config set registry https://registry.npmjs.org/ \
-    && npm config set fetch-retries 5 \
-    && npm config set fetch-retry-factor 5 \
-    && npm config set fetch-retry-mintimeout 20000 \
-    && npm config set fetch-retry-maxtimeout 120000 
+# Configure Yarn for better network resilience
+RUN yarn config set network-timeout 300000 \
+    && yarn config set retry-times 5 \
+    && yarn config set prefer-offline true
 
 # Install dependencies
-RUN npm ci --prefer-offline --no-audit
+RUN yarn install --frozen-lockfile --network-timeout 300000
 
 # Copy the rest of the application code
 COPY . ./
 
 # Build the application
-RUN npm run build
+RUN yarn build
 
 # Stage 2: Serve the React app with Nginx
 FROM nginx:alpine

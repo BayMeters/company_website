@@ -6,12 +6,14 @@ import ContactInfo from '../components/ContactInfo';
 const ContactPage = () => {
   return (
     <Layout>
-      <div className="flex-row lg:flex justify-between items-start mx-10 gap-10">
-        <div className="flex-auto max-w-1/2 mx-1 ">
-          <ContactInfo />
-        </div>
-        <div className="flex-auto min-w-96 max-w-1/2 mx-1">
-          <ContactForm />
+      <div className="container mx-auto px-4 py-8">
+        <div className="flex flex-col lg:flex-row justify-center items-center gap-8 lg:gap-16">
+          <div className="w-full lg:w-1/2 max-w-md">
+            <ContactInfo />
+          </div>
+          <div className="w-full lg:w-1/2 max-w-md">
+            <ContactForm />
+          </div>
         </div>
       </div>
     </Layout>

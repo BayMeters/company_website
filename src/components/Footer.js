@@ -11,7 +11,7 @@ const Footer = () => {
     <footer class="bg-green-50 font-sans">
     <div class="container px-6 py-12 mx-auto">
         {/* <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-y-10 lg:grid-cols-4"> */}
-        <div class="flex justify-between">
+        <div class="flex justify-items-center mx-20 gap-40">
 
             {/* <div class="sm:col-span-2">
                 <h1 class="max-w-lg text-xl font-medium tracking-tight font-anek text-gray-800 xl:text-2xl">Subscribe our newsletter to get an update.</h1>
@@ -44,16 +44,17 @@ const Footer = () => {
             </div>
 
             <div className='flex-auto'>
-                <p class="font-semibold text-gray-800 ">Quick Link</p>
+                <p class="font-semibold text-gray-800 text-xl">Quick Link</p>
 
-                <div class="flex flex-col items-start mt-5 space-y-2">
-                    <a href="/" class="text-teal-800 transition-colors duration-300 hover:underline">Home</a>
-                    <a href="/about" class="text-teal-800 transition-colors duration-300 hover:underline">About</a>
-                    <a href='/contact' class="text-teal-800 transition-colors duration-300 hover:underline">Contact</a>
+                <div class="flex flex-row items-start mt-5 space-x-28">
+                    <a href="/" class="text-teal-800 text-xl transition-colors duration-300 hover:underline">Home</a>
+                    <a href="https://www.supmeaauto.com/products" target="_blank" rel="noopener noreferrer" class="text-teal-800 text-xl transition-colors duration-300 hover:underline">Product</a>
+                    <a href="/about" class="text-teal-800 text-xl transition-colors duration-300 hover:underline">About</a>
+                    <a href='/contact' class="text-teal-800 text-xl transition-colors duration-300 hover:underline">Contact</a>
                 </div>
             </div>
 
-            <div className='flex-auto'>
+            {/* <div className='flex-auto'>
                 <p class="font-semibold text-gray-800">products</p> 
                 <div class="flex flex-col items-start mt-5 space-y-2">
                     <p class="text-teal-800 transition-colors duration-300 hover:underline hover:cursor-pointer ">Flowmeter</p>
@@ -63,9 +64,9 @@ const Footer = () => {
                     <p class="text-teal-800 transition-colors duration-300 hover:underline hover:cursor-pointer ">System products</p>
                     <p class="text-teal-800 transition-colors duration-300 hover:underline hover:cursor-pointer ">Temperature</p>
                 </div>
-            </div>
+            </div> */}
 
-            <div className='flex-auto'>
+            {/* <div className='flex-auto'>
                 <p class="font-semibold text-gray-800">Industries</p>
 
                 <div class="flex flex-col items-start mt-5 space-y-2">
@@ -73,7 +74,7 @@ const Footer = () => {
                     <p class="text-teal-800 transition-colors duration-300 hover:underline hover:cursor-pointer ">Agriculture</p>
                     <p class="text-teal-800 transition-colors duration-300 hover:underline hover:cursor-pointer ">Food & Beverage</p>
                 </div>
-            </div>
+            </div> */}
 
         </div>
         

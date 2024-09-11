@@ -31,13 +31,13 @@ const PartnershipSection = () => {
             <br/>
         </h2>
 
-        <p className="text-xl text-teal-950 text-wrap:pretty font-extralight mb-5">
+        <p className="text-xl text-teal-950 text-wrap:pretty font-extralight mb-14">
           Committed to forging win-win partnerships and becoming a trusted ally for distributors and solution integrators.
         </p>
             
-        {/* <button className="bg-green-50 hover:bg-green-600 text-white font-sans font-medium py-2 px-4 rounded-sm transition duration-300">
-          Team up to improve
-        </button> */}
+        <a href="https://drive.google.com/file/d/1nQb8ZkotynIIJf_8REBcV0gE3GhviSo3/view" target="_blank" rel="noopener noreferrer" className="bg-green-50 hover:bg-green-600 text-white font-sans font-medium py-3 px-7 rounded-sm transition duration-300">
+          Download Product Overview
+        </a>
 
       </div>
 

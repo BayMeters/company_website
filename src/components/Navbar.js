@@ -68,75 +68,77 @@ export default function Navbar() {
         <Link to="/" className="pt-2">
             <span className="sr-only">Your Company</span>
             <BayMetersLogo />
-          </Link>
+        </Link>
 
-          <Popover>
-            <PopoverButton className="flex items-center gap-x-1 pt-2.5 text-lg font-extralight leading-6 text-gray-700 focus:outline-none ">
-              Product
-              <ChevronDownIcon aria-hidden="true" className="h-5 w-5 flex-none text-gray-600" />
-            </PopoverButton>
-            <PopoverPanel
-              transition
-              className="absolute rounded-md left-[calc(15%)] z-50 top-[calc(100%)] w-screen max-w-md overflow-hidden bg-white shadow-2xl transition data-[closed]:translate-y-1 data-[closed]:opacity-0 data-[enter]:duration-200 data-[leave]:duration-150 data-[enter]:ease-out data-[leave]:ease-in"
-            >
-              <div className="p-4">
-                {products.map((item) => (
-                  <div
-                    key={item.name}
-                    className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50"
-                  >
-                    {/* <div className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-                      <item.icon aria-hidden="true" className="h-6 w-6 text-gray-600 group-hover:text-green-50" />
-                    </div> */}
-                    <div className="flex-auto">
-                      <a href={item.href} className="block font-semibold text-gray-900">
-                        {item.name}
-                        <span className="absolute inset-0" />
-                      </a>
-                      <p className="mt-1 text-gray-600">{item.description}</p>
-                    </div>
+        <a href="https://www.supmeaauto.com/products" target="_blank" rel="noopener noreferrer" className="pl-3 pt-2.5 text-lg font-extralight leading-6 text-gray-900">
+          Product
+        </a>
+
+        <a href="" target="_blank" rel="noopener noreferrer" className="pl-3 pt-2.5 text-lg font-extralight leading-6 text-gray-900">
+          Quick Pay
+        </a>
+
+        {/* <Popover>
+          <PopoverButton className="flex items-center gap-x-1 pt-2.5 text-lg font-extralight leading-6 text-gray-700 focus:outline-none ">
+            Product
+            <ChevronDownIcon aria-hidden="true" className="h-5 w-5 flex-none text-gray-600" />
+          </PopoverButton>
+          <PopoverPanel
+            transition
+            className="absolute rounded-md left-[calc(15%)] z-50 top-[calc(100%)] w-screen max-w-md overflow-hidden bg-white shadow-2xl transition data-[closed]:translate-y-1 data-[closed]:opacity-0 data-[enter]:duration-200 data-[leave]:duration-150 data-[enter]:ease-out data-[leave]:ease-in"
+          >
+            <div className="p-4">
+              {products.map((item) => (
+                <div
+                  key={item.name}
+                  className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50"
+                >
+                  <div className="flex-auto">
+                    <a href={item.href} className="block font-semibold text-gray-900">
+                      {item.name}
+                      <span className="absolute inset-0" />
+                    </a>
+                    <p className="mt-1 text-gray-600">{item.description}</p>
                   </div>
-                ))}
-              </div>
-            </PopoverPanel>
-          </Popover>
+                </div>
+              ))}
+            </div>
+          </PopoverPanel>
+        </Popover> */}
 
-          <Popover>
-            <PopoverButton className="flex items-center gap-x-1 pt-2.5 text-lg font-extralight leading-6 text-gray-900 focus:outline-none ">
-              Industries
-              <ChevronDownIcon aria-hidden="true" className="h-5 w-5 flex-none text-gray-600" />
-            </PopoverButton>
-            <PopoverPanel
-              transition
-              className="absolute rounded-md left-[calc(25%)] z-50 top-[calc(100%)] w-screen max-w-md overflow-hidden bg-white shadow-2xl transition data-[closed]:translate-y-1 data-[closed]:opacity-0 data-[enter]:duration-200 data-[leave]:duration-150 data-[enter]:ease-out data-[leave]:ease-in"
-            >
-              <div className="p-4">
-                {industries.map((item) => (
-                  <div
-                    key={item.name}
-                    className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50"
-                  >
-                    {/* <div className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-                      <item.icon aria-hidden="true" className="h-6 w-6 text-gray-600 group-hover:text-green-50" />
-                    </div> */}
-                    <div className="flex-auto">
-                      <a href={item.href} className="block font-semibold text-gray-900">
-                        {item.name}
-                        <span className="absolute inset-0" />
-                      </a>
-                      <p className="mt-1 text-gray-600">{item.description}</p>
-                    </div>
+        {/* <Popover>
+          <PopoverButton className="flex items-center gap-x-1 pt-2.5 text-lg font-extralight leading-6 text-gray-900 focus:outline-none ">
+            Industries
+            <ChevronDownIcon aria-hidden="true" className="h-5 w-5 flex-none text-gray-600" />
+          </PopoverButton>
+          <PopoverPanel
+            transition
+            className="absolute rounded-md left-[calc(25%)] z-50 top-[calc(100%)] w-screen max-w-md overflow-hidden bg-white shadow-2xl transition data-[closed]:translate-y-1 data-[closed]:opacity-0 data-[enter]:duration-200 data-[leave]:duration-150 data-[enter]:ease-out data-[leave]:ease-in"
+          >
+            <div className="p-4">
+              {industries.map((item) => (
+                <div
+                  key={item.name}
+                  className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50"
+                >
+                  <div className="flex-auto">
+                    <a href={item.href} className="block font-semibold text-gray-900">
+                      {item.name}
+                      <span className="absolute inset-0" />
+                    </a>
+                    <p className="mt-1 text-gray-600">{item.description}</p>
                   </div>
-                ))}
-              </div>
-            </PopoverPanel>
-          </Popover>
+                </div>
+              ))}
+            </div>
+          </PopoverPanel>
+        </Popover> */}
 
-          <a href="/about" className="pl-3 pt-2.5 text-lg font-extralight leading-6 text-gray-900">
-            About
-          </a>
+        <a href="/about" className="pl-3 pt-2.5 text-lg font-extralight leading-6 text-gray-900">
+          About
+        </a>
 
-        </PopoverGroup>
+      </PopoverGroup>
         
         <div className="flex lg:hidden">
           <button
@@ -178,7 +180,15 @@ export default function Navbar() {
           <div className="mt-6 flow-root">
             <div className="-my-6 divide-y divide-gray-500/10">
               <div className="space-y-2 py-6">
-                <Disclosure as="div" className="-mx-3">
+
+                <a
+                  href="https://www.supmeaauto.com/products" target="_blank" rel="noopener noreferrer"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                >
+                  Product
+                </a>
+            
+                {/* <Disclosure as="div" className="-mx-3">
                   {({ open }) => (
                     <>
                       <DisclosureButton className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
@@ -202,23 +212,27 @@ export default function Navbar() {
                       </DisclosurePanel>
                     </>
                   )}
-                </Disclosure>
-                <a
+                </Disclosure> */}
+
+                {/* <a
                   href="/"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Industries
-                </a>
+                </a> */}
+                
                 <a
                   href="/about"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   About
                 </a>
+
               </div>
+
               <div className="py-6">
                 <a
-                  href="/"
+                  href="/contact"
                   className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Contact Us

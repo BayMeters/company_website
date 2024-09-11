@@ -45,8 +45,8 @@ const ProductCard = ({ product }) => (
       <h3 className="text-xl font-normal text-teal-900 mb-2">{product.name}</h3>
       <p className="text-sm text-teal-900 mb-4 font-extralight">{product.description}</p>
       <div className="flex gap-1">
-       <p className="text-sm text-teal-900 font-extralight mt-0.5">from</p>
-        <p className="text-md text-teal-900 font-semibold">${product.price}</p>
+       <p className="text-sm text-teal-900 font-extralight mt-0.5">Contact us for <strong>price</strong></p>
+        {/* <p className="text-md text-teal-900 font-semibold">${product.price}</p> */}
       </div>
     </div>
   </div>

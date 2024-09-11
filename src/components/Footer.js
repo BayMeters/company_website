@@ -37,10 +37,10 @@ const Footer = () => {
                     Pleasanton, CA 94568<br/>
                     866 305-7799
                 </p>
-                <div class="flex gap-4 hover:cursor-pointer">
+                {/* <div class="flex gap-4 hover:cursor-pointer">
                     <img src="https://www.svgrepo.com/show/343567/linkedin-network-communication-connection-internet-online.svg" width="31" height="31" alt="in"/>
                     <img src="https://www.svgrepo.com/show/475647/facebook-color.svg" width="30" height="30" alt="fb"  />
-                </div>
+                </div> */}
             </div>
 
             <div className='flex-auto'>

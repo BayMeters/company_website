@@ -1,27 +1,29 @@
 # Stage 1: Build the React app
-FROM node:18.17.1 AS build
-WORKDIR /app
-
-# Copy package files
-COPY package.json yarn.lock ./
-
-# Configure Yarn for better network resilience
-RUN yarn config set network-timeout 300000 \
-    && yarn config set retry-times 5 \
-    && yarn config set prefer-offline true
-
-# Install dependencies
+FROM node:18.17.1 AS frontend-build
+WORKDIR /app/frontend
+COPY frontend/package.json frontend/yarn.lock ./
 RUN yarn install --frozen-lockfile --network-timeout 300000
-
-# Copy the rest of the application code
-COPY . ./
-
-# Build the application
+COPY frontend .
 RUN yarn build
 
-# Stage 2: Serve the React app with Nginx
+# Stage 2: Set up the backend
+FROM node:18.17.1 AS backend
+WORKDIR /app/backend
+COPY backend/package.json backend/yarn.lock ./
+RUN yarn install --frozen-lockfile --network-timeout 300000
+COPY backend .
+
+# Stage 3: Final image
 FROM nginx:alpine
-COPY --from=build /app/build /usr/share/nginx/html
+# Copy frontend build
+COPY --from=frontend-build /app/frontend/build /usr/share/nginx/html
+# Copy backend
+COPY --from=backend /app/backend /app/backend
+# Copy Nginx configuration
 COPY nginx.conf /etc/nginx/nginx.conf
+# Install Node.js in the final image
+RUN apk add --update nodejs npm
+# Expose port 80
 EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+# Start Nginx and Node.js backend
+CMD ["sh", "-c", "nginx && cd /app/backend && node server.js"]

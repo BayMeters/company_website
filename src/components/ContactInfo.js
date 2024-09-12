@@ -3,8 +3,8 @@ import { MapPin, Phone, Mail } from 'lucide-react';
 
 const ContactInfo = () => {
     return (
-      <main className="flex-grow container mx-auto px-4 py-8">
-        <h1 className="text-3xl font-bold mb-6">Contact Us</h1>
+      <main className="flex-grow container -mx-10 py-8">
+        <h1 className="text-3xl font-anek font-semibold ">Contact Us</h1>
         <div className="bg-white p-6 mb-10">
 
           {/* <h2 className="text-2xl font-semibold mb-4">Contact Information</h2> */}
@@ -32,7 +32,7 @@ const ContactInfo = () => {
 
             <div className="flex items-center">
               <Phone className="mr-2 text-gray-600" size={20} />
-              <p className="font-semibold"> Number: 866 305 7799</p>
+              <p className="font-semibold"> Toll Free: 866 305 7799</p>
             </div>
           </div>
 

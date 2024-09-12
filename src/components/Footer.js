@@ -25,7 +25,7 @@ const Footer = () => {
                 </div>
             </div> */}
             
-            <div className="flex flex-col flex-auto">
+            <div className="flex flex-col flex-auto min-w-44">
                 <a href="/" >
                     <span className="sr-only">Your Company</span>
                     <BayMetersLogo />
@@ -48,7 +48,7 @@ const Footer = () => {
 
                 <div class="flex flex-row items-start mt-5 space-x-28">
                     <a href="/" class="text-teal-800 text-xl transition-colors duration-300 hover:underline">Home</a>
-                    <a href="https://www.supmeaauto.com/products" target="_blank" rel="noopener noreferrer" class="text-teal-800 text-xl transition-colors duration-300 hover:underline">Product</a>
+                    {/* <a href="https://www.supmeaauto.com/products" target="_blank" rel="noopener noreferrer" class="text-teal-800 text-xl transition-colors duration-300 hover:underline">Product</a> */}
                     <a href="/about" class="text-teal-800 text-xl transition-colors duration-300 hover:underline">About</a>
                     <a href='/contact' class="text-teal-800 text-xl transition-colors duration-300 hover:underline">Contact</a>
                 </div>

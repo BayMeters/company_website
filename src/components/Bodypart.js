@@ -1,6 +1,7 @@
 import React from 'react';
 import GoldenBridge from '../Assets/image.png';
 
+
 const PartnershipSection = () => {
   return (
     <div className="flex flex-col lg:flex-row items-center justify-between mx-auto px-10 py-10 gap-20">
@@ -36,7 +37,7 @@ const PartnershipSection = () => {
         </p>
             
         <a href="https://drive.google.com/file/d/1nQb8ZkotynIIJf_8REBcV0gE3GhviSo3/view" target="_blank" rel="noopener noreferrer" className="bg-green-50 hover:bg-green-600 text-white font-sans font-medium py-3 px-7 rounded-sm transition duration-300">
-          Download Product Overview
+          Download Product Catalog
         </a>
 
       </div>

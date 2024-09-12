@@ -70,11 +70,11 @@ export default function Navbar() {
             <BayMetersLogo />
         </Link>
 
-        <a href="https://www.supmeaauto.com/products" target="_blank" rel="noopener noreferrer" className="pl-3 pt-2.5 text-lg font-extralight leading-6 text-gray-900">
+        {/* <a href="https://www.supmeaauto.com/products" target="_blank" rel="noopener noreferrer" className="pl-3 pt-2.5 text-lg font-extralight leading-6 text-gray-900">
           Product
-        </a>
+        </a> */}
 
-        <a href="" target="_blank" rel="noopener noreferrer" className="pl-3 pt-2.5 text-lg font-extralight leading-6 text-gray-900">
+        <a href="/comingsoon" target="_blank" rel="noopener noreferrer" className="pl-3 pt-2.5 text-lg font-extralight leading-6 text-gray-900">
           Quick Pay
         </a>
 

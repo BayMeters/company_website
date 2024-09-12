@@ -8,6 +8,7 @@ import Singleproductpage from './pages/Singleproductpage.js';
 import Aboutpage from './pages/About.js';
 import Contactpage from './pages/Contact.js';
 import Comingsoonpage from './pages/Comingsoon.js';
+import Privacypage from './pages/Privacy.js';
 // import NotFound from './pages/NotFound';
 
 
@@ -21,6 +22,7 @@ const App = () => {
         <Route path="/about" element={<Aboutpage />} />
         <Route path="/contact" element={<Contactpage />} />
         <Route path="/comingsoon" element={<Comingsoonpage />} />
+        < Route path="/privacy" element={<Privacypage />} />
         {/* <Route path="*" element={<NotFound />} /> */}
       </Routes>
     </Router>

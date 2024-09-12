@@ -21,7 +21,7 @@ router.post('/submit-to-notion', async (req, res) => {
             "Person": {  
                 "people": [ {
                         "object": "user",
-                        "id": "2181b319-2e53-49f7-9ef5-1bbeceb7904e"
+                        "id": "f5ce1e5d-c33f-464d-bd9b-a81224626784"
                     } ]
             }
         }

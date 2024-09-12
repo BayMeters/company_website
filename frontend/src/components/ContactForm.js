@@ -125,8 +125,8 @@ const ContactForm = () => {
         </div>
         {submitStatus === 'success' && (
         <div className=" text-teal-950 mt-4 text-start" role="alert">
-          <strong className="font-bold">Sent!</strong>
-          <span className="block sm:inline"> We'll contact you soon~</span>
+          <strong className="font-bold">Thank you!</strong>
+          <span className="block sm:inline"> We’ll get back to you soon</span>
         </div>
       )}
       </form>

@@ -11,7 +11,7 @@ const Footer = () => {
     <footer class="bg-green-50 font-sans">
     <div class="container px-6 py-12 mx-auto">
         {/* <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-y-10 lg:grid-cols-4"> */}
-        <div class="flex justify-items-center mx-20 gap-40">
+        <div class="flex mx-20 gap-10">
 
             {/* <div class="sm:col-span-2">
                 <h1 class="max-w-lg text-xl font-medium tracking-tight font-anek text-gray-800 xl:text-2xl">Subscribe our newsletter to get an update.</h1>
@@ -30,7 +30,7 @@ const Footer = () => {
                     <span className="sr-only">Your Company</span>
                     <BayMetersLogo />
                 </a>
-                <p className='mt-2.5 text-teal-800 transition-colors duration-300 text-sm mb-5'>
+                <p className='mt-2.5 text-teal-800 transition-colors duration-300 text-base mb-5'>
                     BayMeters LLC<br/>
                     Corporate Commons<br/>
                     6200 Stoneridge Mall Road, 3rd Floor<br/>
@@ -42,13 +42,16 @@ const Footer = () => {
                     <img src="https://www.svgrepo.com/show/475647/facebook-color.svg" width="30" height="30" alt="fb"  />
                 </div> */}
             </div>
+            
+            <div className='flex-grow'></div>
 
-            <div className='flex-auto'>
+            <div className='flex-auto justify-end'>
                 <p class="font-semibold text-gray-800 text-xl">Quick Link</p>
 
                 <div class="flex flex-row items-start mt-5 space-x-28">
                     <a href="/" class="text-teal-800 text-xl transition-colors duration-300 hover:underline">Home</a>
                     {/* <a href="https://www.supmeaauto.com/products" target="_blank" rel="noopener noreferrer" class="text-teal-800 text-xl transition-colors duration-300 hover:underline">Product</a> */}
+                    <a href="/comingsoon" class="text-teal-800 text-xl transition-colors duration-300 hover:underline">Quick Pay</a>
                     <a href="/about" class="text-teal-800 text-xl transition-colors duration-300 hover:underline">About</a>
                     <a href='/contact' class="text-teal-800 text-xl transition-colors duration-300 hover:underline">Contact</a>
                 </div>
@@ -96,7 +99,11 @@ const Footer = () => {
                 <img src="https://www.svgrepo.com/show/22048/dribbble.svg" class="" width="30" height="30" alt="db" />
             </div> */}
         </div>
-        <p class="text-teal-800 font-light text-center md:text-lg pt-10">© 2024 BayMeters LLC. All rights reserved.</p>
+        <div className='flex mx-20'>
+            <p class="text-teal-800 font-light text-base pt-10">© 2024 BayMeters LLC. All rights reserved.</p>
+            <div className='flex-grow'></div>
+            <a href='/privacy' class="text-teal-800 font-light text-base pt-10 hover:underline">Privacy Notice</a>
+        </div>
     </div>
 </footer>
   );

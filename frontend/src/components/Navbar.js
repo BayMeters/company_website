@@ -182,10 +182,10 @@ export default function Navbar() {
               <div className="space-y-2 py-6">
 
                 <a
-                  href="https://www.supmeaauto.com/products" target="_blank" rel="noopener noreferrer"
+                  href="/comingsoon" target="_blank" rel="noopener noreferrer"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
-                  Product
+                  Quick Pay
                 </a>
             
                 {/* <Disclosure as="div" className="-mx-3">

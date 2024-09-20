@@ -5,12 +5,12 @@ import Flowmetertwo from '../Assets/flowmeter2.webp';
 import Pressure from '../Assets/pressure.webp';
 
 const industries = [
-  'Flowmeter', 
-  'Liquid analysis',
+  'Flow', 
+  'Temperature',
   'Level',
   'Pressure',
+  'Analysis',
   'System products',
-  'Temperature',
   "other"
 ];
 
@@ -20,14 +20,14 @@ const products = [
     description: "SUP-LDG Electromagnetic meters are a leading choice to deliver the performance and precision your applications require.",
     image: Flowmeter,
     price: 75,
-    categories: ["Flowmeter","other"]
+    categories: ["Flow","other"]
   },
   {
     name: "SUP-LDG Stainless steel body electromagnetic flowmeter",
     description: "Magnetic flow meters operate under the principle of Faraday's Law of Electromagnetic Induction to measure liquid velocity.",
     image: Flowmetertwo,
     price: 150,
-    categories: ["Flowmeter", "Food & Beverage","other"]
+    categories: ["Flow", "Food & Beverage","other"]
   },
   {
     name: "SUP-P3000 Pressure transmitter",
@@ -53,8 +53,7 @@ const ProductCard = ({ product }) => (
 );
 
 const ViewMoreButton = ({ className }) => (
-  <a href='https://www.supmeaauto.com/products' target="_blank" rel="noopener noreferrer" className={`${className} gap-10 flex justify-between text-left cursor-pointer bg-white p-4 rounded-sm hover:border border-teal-200 hover:shadow-lg`}>
-    {/* <h3 className="pt-1 text-xl font-anek text-green-50 mb-2">View more products</h3> */}
+  <a href='/comingsoon' target="_blank" rel="noopener noreferrer" className={`${className} gap-10 flex justify-between text-left cursor-pointer bg-white p-4 rounded-sm hover:border border-teal-200 hover:shadow-lg`}>
     <div>
       <h2 className="text-xl font-normal text-teal-900 mb-3">More products...</h2>
       <p className="text-sm text-teal-900 font-extralight mb-2">Will be redirected to Supmea’s product website</p>
@@ -100,13 +99,13 @@ const ProductShowcase = () => {
           
         ))}
 
-        <div className={`items-center justify-center
-              ${filteredProducts.length > 2
-                ? 'sm:col-span-1 lg:col-span-3 items-center justify-center'
-                : 'sm:col-span-2 lg:col-span-1'}`
-              }   >
-          <ViewMoreButton className="w-full h-full" />
-        </div>
+      <div className={`items-center justify-center
+        ${filteredProducts.length === 0 || filteredProducts.length > 2
+          ? 'sm:col-span-1 lg:col-span-3 items-center justify-center'
+          : 'sm:col-span-2 lg:col-span-1'}`
+      }>
+        <ViewMoreButton className="w-full h-full" />
+      </div>
         
       </div>
     </div>

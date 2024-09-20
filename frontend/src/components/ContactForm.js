@@ -62,11 +62,11 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-8">
+    <div className="max-w-md mx-auto">
       
       <form onSubmit={handleSubmit} className="bg-white shadow-lg border rounded-xl border-teal-200 px-8 pt-6 pb-8 mb-4">
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
+          <label className="block text-base text-teal-950 font-medium mb-2" htmlFor="name">
             Name
           </label>
           <input
@@ -83,7 +83,7 @@ const ContactForm = () => {
           {errors.name && <p className="text-red-500 text-xs italic">{errors.name}</p>}
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
+          <label className="block text-base text-teal-950 font-medium mb-2" htmlFor="email">
             Email
           </label>
           <input
@@ -100,7 +100,7 @@ const ContactForm = () => {
           {errors.email && <p className="text-red-500 text-xs italic">{errors.email}</p>}
         </div>
         <div className="mb-6">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="message">
+          <label className="block text-base text-teal-950 font-medium mb-2" htmlFor="message">
             Message
           </label>
           <textarea

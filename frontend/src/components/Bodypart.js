@@ -37,7 +37,7 @@ const PartnershipSection = () => {
           Committed to forging win-win partnerships and becoming a trusted ally for distributors and solution integrators.
         </p>
             
-        <a href="https://drive.google.com/file/d/1nQb8ZkotynIIJf_8REBcV0gE3GhviSo3/view" target="_blank" rel="noopener noreferrer" className="bg-green-50 hover:bg-green-600 text-white font-sans font-medium py-3 px-7 rounded-sm transition duration-300">
+        <a href="https://drive.google.com/file/d/1_x6LxJMQKxtu-NOKI0z6KhJCTKwwx9Ol/view?usp=drive_link" target="_blank" rel="noopener noreferrer" className="bg-green-50 hover:bg-green-600 text-white font-sans font-medium py-3 px-7 rounded-sm transition duration-300">
           Product Catalog
         </a>
 

@@ -53,10 +53,10 @@ const ProductCard = ({ product }) => (
 );
 
 const ViewMoreButton = ({ className }) => (
-  <a href='/comingsoon' target="_blank" rel="noopener noreferrer" className={`${className} gap-10 flex justify-between text-left cursor-pointer bg-white p-4 rounded-sm hover:border border-teal-200 hover:shadow-lg`}>
+  <a href='https://drive.google.com/file/d/1_x6LxJMQKxtu-NOKI0z6KhJCTKwwx9Ol/view?usp=drive_link' target="_blank" rel="noopener noreferrer" className={`${className} gap-10 flex justify-between text-left cursor-pointer bg-white p-4 rounded-sm hover:border border-teal-200 hover:shadow-lg`}>
     <div>
       <h2 className="text-xl font-normal text-teal-900 mb-3">More products...</h2>
-      <p className="text-sm text-teal-900 font-extralight mb-2">Will be redirected to Supmea’s product website</p>
+      {/* <p className="text-sm text-teal-900 font-extralight mb-2">Will be redirected to Supmea’s product website</p> */}
     </div>
     <div> <ArrowRight className="text-teal-500" size={24} /></div>
     

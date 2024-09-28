@@ -7,8 +7,7 @@ module.exports = {
       colors: {
         'green':{
           '50':"#2ECC71",
-          // '50':"#003D2D",
-          '100':"#1C7E61",
+          '950':"#f0fdf4"
         }
       },
       fontFamily: {

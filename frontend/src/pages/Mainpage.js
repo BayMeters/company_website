@@ -8,11 +8,13 @@ import { ArrowRight } from 'lucide-react';
 const WebsiteLayout = () => {
   return (
     <Layout>
-      <div className="container mx-auto">
+      <div className="min-h-screen"> 
+        <div className="container mx-auto">
           <PartnershipSection />
-      </div>
-      <div className="container mx-auto p-4">
+        </div>
+        <div className="container mx-auto p-4">
           <ProductShowcase />
+        </div>
       </div>
     </Layout>
   );

@@ -1,6 +1,5 @@
 import React from 'react';
 import Layout from '../components/Layout.js';
-import Supmea from '../Assets/Supmea.jpg';
 
 const AboutPage = () => {
   return (

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const BayMetersLogo = () => (
     <div className="flex items-center">
@@ -12,10 +13,10 @@ const Footer = () => {
       <div className="container px-6 py-12 mx-auto">
         <div className="flex flex-col lg:flex-row justify-between mx-20 gap-10">
           <div className="flex flex-col flex-auto min-w-44">
-            <a href="/" >
+            <Link to="/" >
                     <span className="sr-only">Your Company</span>
                     <BayMetersLogo />
-                </a>
+                </Link>
             <p className='text-teal-800 text-lg font-extralight mb-5'>
               BayMeters LLC<br/>
               Corporate Commons<br/>
@@ -29,10 +30,10 @@ const Footer = () => {
             <div>
               <p className="font-medium text-xl mb-5">Quick Link</p>
               <div className="flex flex-col sm:flex-row gap-4 sm:gap-8">
-                <a href="/" className="transition-colors duration-300 hover:underline">Home</a>
-                <a href="/comingsoon" className="transition-colors duration-300 hover:underline">Quick Pay</a>
-                <a href="/about" className="transition-colors duration-300 hover:underline">About</a>
-                <a href='/contact' className="transition-colors duration-300 hover:underline">Contact</a>
+                <Link to="/" className="transition-colors duration-300 hover:underline">Home</Link>
+                <Link to="/comingsoon" className="transition-colors duration-300 hover:underline">Quick Pay</Link>
+                <Link to="/about" className="transition-colors duration-300 hover:underline">About</Link>
+                <Link to='/contact' className="transition-colors duration-300 hover:underline">Contact</Link>
               </div>
             </div>
           </div>
@@ -40,7 +41,7 @@ const Footer = () => {
         
         <div className='flex flex-col sm:flex-row justify-between mx-20 mt-10'>
           <p className="text-teal-800 font-light text-base">© 2024 BayMeters LLC. All rights reserved.</p>
-          <a href='/privacy' className="text-teal-800 font-light text-base hover:underline">Privacy Notice</a>
+          <Link to='/privacy' className="text-teal-800 font-light text-base hover:underline">Privacy Notice</Link>
         </div>
       </div>
     </footer>

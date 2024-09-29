@@ -14,10 +14,11 @@ WORKDIR /app/frontend
 # Replace <REPO_URL> with your actual repository URL
 # If your repository is private, ensure you handle authentication securely
 RUN git clone https://github.com/BayMeters/company_website.git . && \
-    git lfs pull
+    git lfs pull && \
+    ls -la /app/frontend
 
 # Install dependencies
-RUN cd frontend
+RUN cd frontend 
 RUN yarn install --frozen-lockfile --network-timeout 300000
 
 # Build the frontend

@@ -1,9 +1,25 @@
 # Stage 1: Build the React app
 FROM node:18.17.1 AS frontend-build
+
+# Install Git and Git LFS
+RUN apt-get update && \
+    apt-get install -y git curl && \
+    curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash && \
+    apt-get install -y git-lfs && \
+    git lfs install
+
 WORKDIR /app/frontend
-COPY frontend/package.json frontend/yarn.lock ./
+
+# Clone the repository to ensure Git LFS files are pulled
+# Replace <REPO_URL> with your actual repository URL
+# If your repository is private, ensure you handle authentication securely
+RUN git clone <REPO_URL> . && \
+    git lfs pull
+
+# Install dependencies
 RUN yarn install --frozen-lockfile --network-timeout 300000
-COPY frontend .
+
+# Build the frontend
 RUN yarn build
 
 # Stage 2: Set up the backend

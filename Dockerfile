@@ -15,8 +15,9 @@ COPY backend .
 
 # Stage 3: Final image
 FROM nginx:alpine
-# Copy frontend build
+# Copy frontend build and public folder
 COPY --from=frontend-build /app/frontend/build /usr/share/nginx/html
+COPY --from=frontend-build /app/frontend/public /usr/share/nginx/html/public
 RUN chmod -R 755 /usr/share/nginx/html
 # Copy backend
 COPY --from=backend /app/backend /app/backend

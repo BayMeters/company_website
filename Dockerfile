@@ -13,7 +13,7 @@ WORKDIR /app/frontend
 # Clone the repository to ensure Git LFS files are pulled
 # Replace <REPO_URL> with your actual repository URL
 # If your repository is private, ensure you handle authentication securely
-RUN git clone <REPO_URL> . && \
+RUN git clone https://github.com/BayMeters/company_website.git . && \
     git lfs pull
 
 # Install dependencies

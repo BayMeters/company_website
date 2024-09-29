@@ -15,21 +15,15 @@ COPY backend .
 
 # Stage 3: Final image
 FROM nginx:alpine
-# Copy frontend build to Nginx
+# Copy frontend build
 COPY --from=frontend-build /app/frontend/build /usr/share/nginx/html
-RUN chmod -R 755 /usr/share/nginx/html
-
-# Copy backend code to final image
+# Copy backend
 COPY --from=backend /app/backend /app/backend
-
 # Copy Nginx configuration
 COPY nginx.conf /etc/nginx/nginx.conf
-
-# Install Node.js in the final image for the backend
+# Install Node.js in the final image
 RUN apk add --update nodejs npm
-
-# Expose port 80 for Nginx
+# Expose port 80
 EXPOSE 80
-
 # Start Nginx and Node.js backend
 CMD ["sh", "-c", "nginx && cd /app/backend && node server.js"]

@@ -13,8 +13,8 @@ env:
   ECR_REGISTRY: 515308131221.dkr.ecr.us-east-1.amazonaws.com
   ECR_REPOSITORY: baymeters/company_website
   ECS_CLUSTER: arn:aws:ecs:us-east-1:515308131221:cluster/company_website_runner
-  ECS_SERVICE: arn:aws:ecs:us-east-1:515308131221:service/company_website_runner/website-runner-service-dev
-  ECS_TASK_DEFINITION: baymeter-website-test:1
+  ECS_SERVICE: arn:aws:ecs:us-east-1:515308131221:service/company_website_runner/website-runner-service-test
+  ECS_TASK_DEFINITION: baymeter-website-test
   CONTAINER_NAME: baymeter-website-container
 
 jobs:

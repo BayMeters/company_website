@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Layout from '../components/Layout.js';
-import ProductSearch from '../components/ProductQuery';
-import ProductCard from '../components/ProductCard';
+import ProductSearch from '../components/ProductQuery.js';
+import ProductCard from '../components/ProductCard.js';
 import Breadcrumbs from '../components/Breadcrumbs.js';
 
 const ProductCategoryPage = () => {

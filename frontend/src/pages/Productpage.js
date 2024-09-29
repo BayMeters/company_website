@@ -15,13 +15,20 @@ const ProductPage = () => {
     'Analysis': ['MDA-U1-1.png'],
     'System Products': ['RN3000-1.png']
   };
-
+  const getImageUrl = (photoId) => {
+    try {
+      return require(`../Pictures/${photoId}`);
+    } catch (error) {
+      console.error(`Failed to load image: ${photoId}`, error);
+      return null;
+    }
+  };
   // Function to get a random image for each category
   const getRandomImageForCategory = (category) => {
     const images = categoryImages[category] || [];
     if (images.length === 0) return null;
     const randomIndex = Math.floor(Math.random() * images.length);
-    return `/Pictures/${images[randomIndex]}`;
+    return getImageUrl(images[randomIndex]);
   };
 
   return (

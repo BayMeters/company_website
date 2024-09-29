@@ -28,6 +28,15 @@ const SingleProductPage = () => {
     );
   };
 
+  const getImageUrl = (photoId) => {
+    try {
+      return require(`../Pictures/${photoId}`);
+    } catch (error) {
+      console.error(`Failed to load image: ${photoId}`, error);
+      return null;
+    }
+  };
+
   if (!product) {
     return (
       <Layout>
@@ -52,7 +61,7 @@ const SingleProductPage = () => {
                 <>
                 <div className="flex justify-center ">
                   <img 
-                    src={`${process.env.PUBLIC_URL}/Pictures/${product.Photos[currentImageIndex]}`}
+                    src={getImageUrl(product.Photos[currentImageIndex])}
                     alt={`${product.Model} - Image ${currentImageIndex + 1}`} 
                     className="w-5/6 h-auto bg-white m-2"
                   />

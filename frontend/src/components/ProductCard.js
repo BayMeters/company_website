@@ -5,8 +5,18 @@ const ProductCard = ({ product }) => {
   // Get the first photo ID from the list
   const firstPhotoId = product.Photos && product.Photos.length > 0 ? product.Photos[0] : null;
   
-  // Construct the image URL (adjust the base URL as needed)
-  const imageUrl = firstPhotoId ? `/Pictures/${firstPhotoId}` : null;
+  // Function to get image URL dynamically
+  const getImageUrl = (photoId) => {
+    try {
+      return require(`../Pictures/${photoId}`);
+    } catch (error) {
+      console.error(`Failed to load image: ${photoId}`, error);
+      return null;
+    }
+  };
+
+  // Get the image URL
+  const imageUrl = firstPhotoId ? getImageUrl(firstPhotoId) : null;
 
   // Function to truncate description
   const truncateDescription = (description) => {

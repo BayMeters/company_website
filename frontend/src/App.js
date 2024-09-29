@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 // Import your page components
 import Mainpage from './pages/Mainpage.js';
 import ProductCategoryPage from './pages/ProductCategoryPage.js';
-import SingleProductPage from './pages/Singleproductpage.js';
+import Singleproductpage from './pages/SingleProductPage.js';
 import Aboutpage from './pages/About.js';
 import Contactpage from './pages/Contact.js';
 import Comingsoonpage from './pages/Comingsoon.js';
@@ -18,7 +18,7 @@ const App = () => {
         <Route path="/" element={<Mainpage />} />
         <Route path="/products" element={<Productpage />} />
         <Route path="/products/:category" element={<ProductCategoryPage />} />
-        <Route path="/products/:category/:model" element={<SingleProductPage />} />
+        <Route path="/products/:category/:model" element={<Singleproductpage />} />
         <Route path="/about" element={<Aboutpage />} />
         <Route path="/contact" element={<Contactpage />} />
         <Route path="/comingsoon" element={<Comingsoonpage />} />

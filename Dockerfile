@@ -8,7 +8,7 @@ RUN apt-get update && \
     apt-get install -y git-lfs && \
     git lfs install
 
-# WORKDIR /app/frontend
+WORKDIR /app/frontend
 
 # Clone the repository to ensure Git LFS files are pulled
 # Replace <REPO_URL> with your actual repository URL

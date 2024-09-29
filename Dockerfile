@@ -11,8 +11,6 @@ RUN apt-get update && \
 WORKDIR /app/frontend
 
 # Clone the repository to ensure Git LFS files are pulled
-# Replace <REPO_URL> with your actual repository URL
-# If your repository is private, ensure you handle authentication securely
 RUN git clone https://github.com/BayMeters/company_website.git . && \
     git lfs pull && \
     ls -la /app/frontend
@@ -23,7 +21,7 @@ RUN cd frontend && \
     yarn install --frozen-lockfile --network-timeout 300000
 
 # Build the frontend
-RUN yarn build
+RUN cd frontend && yarn build
 
 # Stage 2: Set up the backend
 FROM node:18.17.1 AS backend
@@ -35,7 +33,7 @@ COPY backend .
 # Stage 3: Final image
 FROM nginx:alpine
 # Copy frontend build
-COPY --from=frontend-build /app/frontend/build /usr/share/nginx/html
+COPY --from=frontend-build /app/frontend/frontend/build /usr/share/nginx/html
 # Copy backend
 COPY --from=backend /app/backend /app/backend
 # Copy Nginx configuration

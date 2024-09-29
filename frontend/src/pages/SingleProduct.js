@@ -52,7 +52,7 @@ const SingleProductPage = () => {
                 <>
                 <div className="flex justify-center ">
                   <img 
-                    src={`/Pictures/${product.Photos[currentImageIndex]}`} 
+                    src={`${process.env.PUBLIC_URL}/Pictures/${product.Photos[currentImageIndex]}`}
                     alt={`${product.Model} - Image ${currentImageIndex + 1}`} 
                     className="w-5/6 h-auto bg-white m-2"
                   />

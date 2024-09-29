@@ -6,7 +6,7 @@ const ProductCard = ({ product }) => {
   const firstPhotoId = product.Photos && product.Photos.length > 0 ? product.Photos[0] : null;
   
   // Construct the image URL (adjust the base URL as needed)
-  const imageUrl = firstPhotoId ? `/Pictures/${firstPhotoId}` : null;
+  const imageUrl = firstPhotoId ? `${process.env.PUBLIC_URL}/Pictures/${firstPhotoId}` : null;
 
   // Function to truncate description
   const truncateDescription = (description) => {

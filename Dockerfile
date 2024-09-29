@@ -17,6 +17,7 @@ COPY backend .
 FROM nginx:alpine
 # Copy frontend build
 COPY --from=frontend-build /app/frontend/build /usr/share/nginx/html
+RUN chmod -R 755 /usr/share/nginx/html
 # Copy backend
 COPY --from=backend /app/backend /app/backend
 # Copy Nginx configuration

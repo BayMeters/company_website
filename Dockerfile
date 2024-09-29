@@ -17,6 +17,7 @@ RUN git clone https://github.com/BayMeters/company_website.git . && \
     git lfs pull
 
 # Install dependencies
+RUN cd frontend
 RUN yarn install --frozen-lockfile --network-timeout 300000
 
 # Build the frontend

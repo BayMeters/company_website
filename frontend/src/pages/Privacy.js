@@ -1,5 +1,6 @@
 import React from 'react';
 import Layout from '../components/Layout.js';
+import { Link } from 'react-router-dom';
 
 const WebsiteLayout = () => {
   return (
@@ -37,7 +38,7 @@ const WebsiteLayout = () => {
           { title: "7. Updates to this Notice", content: "We may periodically update this Privacy Notice. The \"Last updated\" date will be revised accordingly." },
           { title: "8. Contact Us", content: (
             <p>
-              If you have any privacy-related inquiries, please contact us at <a href="mailto:lake@baymeters.com" className="text-blue-600 hover:underline">lake@baymeters.com</a>.
+              If you have any privacy-related inquiries, please <Link to='/contact' className="text-blue-600 hover:underline">contact us</Link> via our website or email at <a href="mailto:lake@baymeters.com" className="text-blue-600 hover:underline">lake@baymeters.com</a>.
             </p>
           )}
         ].map((section, index) => (

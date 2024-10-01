@@ -48,15 +48,15 @@ const SingleProductPage = () => {
           <div className='flex gap-16'>
             {/* Image Gallery */}
             <div className="relative min-w-96 h-full rounded-md border border-gray-200">
-              {product.Photos && product.Photos.length > 0 && (
+              {product.Photos && product.Photos.length > 0 ? (
                 <>
-                <div className="flex justify-center ">
-                  <img 
-                    src={`/Pictures/${product.Photos[currentImageIndex]}`}
-                    alt={`${product.Model} - Image ${currentImageIndex + 1}`} 
-                    className="w-5/6 h-auto bg-white m-2"
-                  />
-                </div>
+                  <div className="flex justify-center ">
+                    <img 
+                      src={`/Pictures/${product.Photos[currentImageIndex]}`}
+                      alt={`${product.Model} - Image ${currentImageIndex + 1}`} 
+                      className="w-5/6 h-auto bg-white m-2"
+                    />
+                  </div>
                   {product.Photos.length > 1 && (
                     <div className="absolute inset-0 flex items-center justify-between m-4">
                       <button 
@@ -74,6 +74,10 @@ const SingleProductPage = () => {
                     </div>
                   )}
                 </>
+              ) : (
+                <div className="flex justify-center items-center h-full">
+                 <img src='/Assets/coming-soon.png' alt='Coming Soon' className="w-5/6 h-auto bg-white m-2" />
+                </div>
               )}
             </div>
             {/* Product Description */}

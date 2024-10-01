@@ -11,14 +11,18 @@ const ProductPage = () => {
     'Flow': ['FLC240-1.png'],
     'Level': ['WSU300-1.png'],
     'Pressure': ['PM556-1.png'],
-    'Temperature': ['TRC200-1.png'],
+    'Temperature': ['TSR500-1.png'],
     'Analysis': ['MDA-PH-1.png'],
     'System Products': ['RN3000-1.png']
   };
 
-  // Function to get a random image for each category
-  const getRandomImageForCategory = (category) => {
-    return `/Pictures/${(categoryImages[category][0])}`;
+  // Function to get an image for each category or return a placeholder
+  const getImageForCategory = (category) => {
+    if (categoryImages[category] && categoryImages[category].length > 0) {
+      return `/Pictures/${categoryImages[category][0]}`;
+    } else {
+      return '/Assets/coming-soon.png'; 
+    }
   };
 
   return (
@@ -34,7 +38,7 @@ const ProductPage = () => {
             >
               <div className="h-48 overflow-hidden justify-center m-4">
                 <img 
-                  src={getRandomImageForCategory(category)} 
+                  src={getImageForCategory(category)} 
                   alt={`${category} category`}
                   className="w-full h-full object-contain transition-transform duration-300 hover:scale-110"
                 />

@@ -119,30 +119,6 @@
     },
     {
         "Type": "Level",
-        "Model": "WSR150 Radar Level Transmitter",
-        "Description": null,
-        "Applications": [],
-        "Photos": [],
-        "Key_Features": []
-    },
-    {
-        "Type": "Level",
-        "Model": "WSR180 Radar Level Transmitter",
-        "Description": null,
-        "Applications": [],
-        "Photos": [],
-        "Key_Features": []
-    },
-    {
-        "Type": "Level",
-        "Model": "WSR300 Radar Level Transmitter",
-        "Description": null,
-        "Applications": [],
-        "Photos": [],
-        "Key_Features": []
-    },
-    {
-        "Type": "Level",
         "Model": "WSR700 Radar Level Transmitter",
         "Description": "The WSR700 series operates at 76-81GHz, utilizing frequency-modulated continuous wave (FMCW) radar technology, suitable for both four-wire and two-wire applications. With multiple models available, it can measure distances up to 120 meters (393 feet) with an 8 cm (3.15 inches) blind zone. The high operating frequency and shorter wavelength make it ideal for solid material applications. Its lens-based electromagnetic wave transmission and reception method offer significant advantages in environments with high dust levels and extreme temperatures (up to +200\u00b0C / 392\u00b0F). The instrument supports flange or threaded connections for easy and convenient installation.",
         "Applications": [
@@ -195,30 +171,6 @@
             "Various designs to accommodate different industrial environments",
             "Anti-corrosion stainless steel material, suitable for a wide range of applications"
         ]
-    },
-    {
-        "Type": "Level",
-        "Model": "WSP506 Submersible Level Sensor",
-        "Description": null,
-        "Applications": [],
-        "Photos": [],
-        "Key_Features": []
-    },
-    {
-        "Type": "Level",
-        "Model": "WSP576 Submersible Level Sensor",
-        "Description": null,
-        "Applications": [],
-        "Photos": [],
-        "Key_Features": []
-    },
-    {
-        "Type": "Pressure",
-        "Model": "PM Series Pressure Transmitter",
-        "Description": "",
-        "Applications": [],
-        "Photos": [],
-        "Key_Features": []
     },
     {
         "Type": "Pressure",
@@ -276,22 +228,6 @@
     },
     {
         "Type": "Pressure",
-        "Model": "PD536 Single-Flange Level",
-        "Description": null,
-        "Applications": [],
-        "Photos": [],
-        "Key_Features": []
-    },
-    {
-        "Type": "Pressure",
-        "Model": "PD566 Dual-Flange Level Sensor",
-        "Description": null,
-        "Applications": [],
-        "Photos": [],
-        "Key_Features": []
-    },
-    {
-        "Type": "Pressure",
         "Model": "PM356 Protective Pressure",
         "Description": "The PM356 series pressure transmitter is a highly reliable device designed for industrial applications. It uses a pressure-sensitive layer combined with an integrated circuit that converts the sensor\u2019s millivolt signal into a standard current signal for long-distance transmission. The transmitter can be easily connected to computers, control instruments, aptitude instruments, or PLC systems, offering seamless integration into process control environments.",
         "Applications": [
@@ -327,29 +263,17 @@
             "Environmental monitoring systems",
             "Liquid and gas temperature control systems"
         ],
-        "Photos": [],
+        "Photos": [
+            "TSR500-1.png",
+            "TSR500-2.png",
+            "TSR500-3.png"
+        ],
         "Key_Features": [
             "Temperature range from -50 to +250\u00b0C (-58 to +482\u00b0F)",
             "Built-in measuring insert",
             "Available as TC (thermocouple) or RTD (resistance temperature detector) probes",
             "Optional transmitter available"
         ]
-    },
-    {
-        "Type": "Temperature",
-        "Model": "TSC500 Thermocouple",
-        "Description": null,
-        "Applications": [],
-        "Photos": [],
-        "Key_Features": []
-    },
-    {
-        "Type": "Analysis",
-        "Model": "MDA-U1 Universal Controller",
-        "Description": null,
-        "Applications": [],
-        "Photos": [],
-        "Key_Features": []
     },
     {
         "Type": "Analysis",
@@ -411,53 +335,5 @@
             "Configurable upper/lower limit alarm and delay",
             "Configurable buzzer and LCD backlight switch"
         ]     
-    },
-    {
-        "Type": "Analysis",
-        "Model": "pH Conductivity DO Sensor",
-        "Description": null,
-        "Applications": [],
-        "Photos": [],
-        "Key_Features": []
-    },
-    {
-        "Type": "Analysis",
-        "Model": "MDX500 Multi-parameter",
-        "Description": null,
-        "Applications": [],
-        "Photos": [],
-        "Key_Features": []
-    },
-    {
-        "Type": "Analysis",
-        "Model": "ADT3300 Sludge Sensor",
-        "Description": null,
-        "Applications": [],
-        "Photos": [],
-        "Key_Features": []
-    },
-    {
-        "Type": "Analysis",
-        "Model": "ADU3100 Low Turbidity Sensor",
-        "Description": null,
-        "Applications": [],
-        "Photos": [],
-        "Key_Features": []
-    },
-    {
-        "Type": "Analysis",
-        "Model": "ADU3300 Turbidity Sensor",
-        "Description": null,
-        "Applications": [],
-        "Photos": [],
-        "Key_Features": []
-    },
-    {
-        "Type": "System Products",
-        "Model": "RN3000 recorder",
-        "Description": null,
-        "Applications": [],
-        "Photos": [],
-        "Key_Features": []
     }
 ]

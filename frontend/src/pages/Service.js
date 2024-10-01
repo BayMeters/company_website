@@ -1,5 +1,6 @@
 import React from 'react';
 import Layout from '../components/Layout.js';
+import { Link } from 'react-router-dom';
 
 const ServiceTerms = () => {
   return (
@@ -60,7 +61,7 @@ const ServiceTerms = () => {
           { title: "7. Claim Procedure", content: "In the event of a warranty claim, the Buyer must notify BayMeters in writing with details of the defect, proof of purchase, serial numbers, and relevant documentation. BayMeters reserves the right to inspect the product and determine whether the defect is covered by the warranty. If validated, BayMeters may repair or replace the defective product, or issue a refund equal to the original purchase price, subject to depreciation. The Seller's decision will be final." },
           { title: "8. Warranty Service and Contact Information", content: (
             <p>
-              For warranty inquiries or technical support, please contact us via our website or email at <a href="mailto:lake@baymeters.com" className="text-blue-600 hover:underline">lake@baymeters.com</a>.
+              For warranty inquiries or technical support, please <Link to='/contact' className="text-blue-600 hover:underline">contact us</Link> via our website or email at <a href="mailto:lake@baymeters.com" className="text-blue-600 hover:underline">lake@baymeters.com</a>.
             </p>
           )}
         ].map((section, index) => (
@@ -81,3 +82,4 @@ const ServiceTerms = () => {
 };
 
 export default ServiceTerms;
+

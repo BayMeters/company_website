@@ -8,27 +8,17 @@ const ProductPage = () => {
 
   // Mapping of product types to their image files
   const categoryImages = {
-    'Flow': ['FLC240-1.png', 'FVC240-1.png'],
+    'Flow': ['FLC240-1.png'],
     'Level': ['WSU300-1.png'],
     'Pressure': ['PM556-1.png'],
     'Temperature': ['TRC200-1.png'],
-    'Analysis': ['MDA-U1-1.png'],
+    'Analysis': ['MDA-PH-1.png'],
     'System Products': ['RN3000-1.png']
   };
-  const getImageUrl = (photoId) => {
-    try {
-      return require(`../Pictures/${photoId}`);
-    } catch (error) {
-      console.error(`Failed to load image: ${photoId}`, error);
-      return null;
-    }
-  };
+
   // Function to get a random image for each category
   const getRandomImageForCategory = (category) => {
-    const images = categoryImages[category] || [];
-    if (images.length === 0) return null;
-    const randomIndex = Math.floor(Math.random() * images.length);
-    return getImageUrl(images[randomIndex]);
+    return `/Pictures/${(categoryImages[category][0])}`;
   };
 
   return (

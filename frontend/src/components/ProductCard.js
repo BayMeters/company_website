@@ -16,7 +16,7 @@ const ProductCard = ({ product }) => {
   };
 
   // Get the image URL
-  const imageUrl = firstPhotoId ? getImageUrl(firstPhotoId) : null;
+  const imageUrl = firstPhotoId ? `/Pictures/${firstPhotoId}` : null;
 
   // Function to truncate description
   const truncateDescription = (description) => {

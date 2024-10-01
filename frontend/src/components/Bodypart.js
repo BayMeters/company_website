@@ -1,6 +1,4 @@
 import React from 'react';
-import GoldenBridge from '../Assets/goldenbridge.png';
-
 
 const PartnershipSection = () => {
   return (
@@ -45,7 +43,7 @@ const PartnershipSection = () => {
 
       <div className="flex-1">
         <img className="w-full h-full lg:block hidden" 
-            src={GoldenBridge} alt="Water"/>
+            src={'/Assets/goldenbridge.png'} alt="Water"/>
       </div>  
 
     </div>

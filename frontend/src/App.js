@@ -10,6 +10,7 @@ import Contactpage from './pages/Contact.js';
 import Comingsoonpage from './pages/Comingsoon.js';
 import Privacypage from './pages/Privacy.js';
 import Productpage from './pages/Productpage.js';
+import Servicepage from './pages/Service.js';
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
         <Route path="/contact" element={<Contactpage />} />
         <Route path="/comingsoon" element={<Comingsoonpage />} />
         <Route path="/privacy" element={<Privacypage />} />
+        <Route path="/service-terms" element={<Servicepage />} />
       </Routes>
     </Router>
   );

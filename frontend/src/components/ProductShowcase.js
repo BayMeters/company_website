@@ -25,7 +25,7 @@ const ProductShowcase = () => {
 
   return (
     <div className="my-8 mx-8">
-      <Link to='/products' className="cursor-pointer text-6xl font-anek font-medium text-green-50 mb-2">Our Products</Link>
+      <Link to='/products' className="cursor-pointer text-6xl font-anek font-medium text-green-50 mb-2 hover:text-green-600">Our Products</Link>
       <div className="flex overflow-x-auto mb-6 space-x-10">
         {industries.map((industry) => (
           <button

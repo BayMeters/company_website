@@ -41,7 +41,10 @@ const Footer = () => {
         
         <div className='flex flex-col sm:flex-row justify-between mx-20 mt-10'>
           <p className="text-teal-800 font-light text-base">© 2024 BayMeters LLC. All rights reserved.</p>
-          <Link to='/privacy' className="text-teal-800 font-light text-base hover:underline">Privacy Notice</Link>
+          <div className="flex gap-10">
+            <Link to='/privacy' className="text-teal-800 font-light text-base hover:underline">Privacy Notice</Link>
+            <Link to='/service-terms' className="text-teal-800 font-light text-base hover:underline">Service Terms</Link>
+          </div>
         </div>
       </div>
     </footer>

@@ -8,6 +8,12 @@ module.exports = {
         'green':{
           '50':"#2ECC71",
           '950':"#f0fdf4"
+        },
+        'navy':{
+          '800':"#1B3139"
+        },
+        'light':{
+          '100':'#f9f7f4'
         }
       },
       fontFamily: {

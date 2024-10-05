@@ -7,7 +7,7 @@ const AboutPage = () => {
       <div className="container mx-auto px-6 sm:px-8 lg:px-16 py-16 max-w-6xl">
         {/* <h1 className="text-4xl font-bold mb-12 text-teal-900 border-b-2 border-teal-200 pb-4">About Us</h1> */}
         
-        <section className="mb-16">
+        <section className="mb-6">
           <h2 className="text-6xl font-anek font-medium text-green-50 mb-2">About Baymeters LLC</h2>
           <div className="bg-white p-8 text-xl text-teal-950 font-extralight">
             <p className="mb-6 leading-relaxed">

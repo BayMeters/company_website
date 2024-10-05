@@ -8,6 +8,7 @@ const SingleProductPage = () => {
   const { category, model } = useParams();
   const [product, setProduct] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isZoomOpen, setIsZoomOpen] = useState(false);
 
   useEffect(() => {
     const fetchedProducts = ProductSearch({ type: category, model: model });
@@ -28,6 +29,10 @@ const SingleProductPage = () => {
     );
   };
 
+  const toggleZoom = () => {
+    setIsZoomOpen(!isZoomOpen);
+  };
+
   if (!product) {
     return (
       <Layout>
@@ -46,30 +51,37 @@ const SingleProductPage = () => {
         <div className="flex-row">
 
           <div className='flex gap-16'>
+            
             {/* Image Gallery */}
-            <div className="relative min-w-96 h-full rounded-md border border-gray-200">
+            <div className="relative min-w-96 h-full rounded-md border border-gray-200  cursor-zoom-in" onClick={toggleZoom}>
               {product.Photos && product.Photos.length > 0 ? (
                 <>
-                  <div className="flex justify-center ">
+                  <div className="flex justify-center">
                     <img 
                       src={`/Pictures/${product.Photos[currentImageIndex]}`}
                       alt={`${product.Model} - Image ${currentImageIndex + 1}`} 
-                      className="w-5/6 h-auto bg-white m-2"
+                      className="w-5/6 h-auto bg-white m-2 cursor-pointer"
                     />
                   </div>
                   {product.Photos.length > 1 && (
                     <div className="absolute inset-0 flex items-center justify-between m-4">
                       <button 
-                        onClick={prevImage} 
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          prevImage();
+                        }} 
                         className="bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition-opacity duration-300"
                       >
-                        &#8249; {/* Left arrow symbol */}
+                        &#8249;
                       </button>
                       <button 
-                        onClick={nextImage} 
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          prevImage();
+                        }} 
                         className="bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition-opacity duration-300"
                       >
-                        &#8250; {/* Right arrow symbol */}
+                        &#8250;
                       </button>
                     </div>
                   )}
@@ -80,6 +92,7 @@ const SingleProductPage = () => {
                 </div>
               )}
             </div>
+
             {/* Product Description */}
             <p className="leading-relaxed text-xl text-teal-950 font-extralight mb-4">{product.Description}</p>
           </div>
@@ -107,8 +120,48 @@ const SingleProductPage = () => {
           
         </div>
       </div> 
+
+      {/* Custom Zoom Modal */}
+      {isZoomOpen && (
+  <div className="fixed inset-0 bg-black bg-opacity-15 flex items-center justify-center z-50">
+    <div className="relative max-w-[90vw] max-h-[90vh] flex items-center justify-center bg-white rounded-lg shadow-2xl">
+      <img 
+        src={`/Pictures/${product.Photos[currentImageIndex]}`}
+        alt={`${product.Model} - Zoomed Image ${currentImageIndex + 1}`} 
+        className="w-3/4 h-auto "
+      />
+
+      <button onClick={(e) => {
+          e.stopPropagation();
+          prevImage();
+        }} 
+        className="absolute left-4 text-white bg-black bg-opacity-50 rounded-full p-2 hover:bg-opacity-75 transition-opacity duration-300"
+      >
+        &#8249;
+      </button>
+
+      <button 
+        onClick={(e) => {
+          e.stopPropagation();
+          nextImage();
+        }} 
+        className="absolute right-4 text-white bg-black bg-opacity-50 rounded-full p-2 hover:bg-opacity-75 transition-opacity duration-300"
+      >
+        &#8250;
+      </button>
+
+      <button 
+        onClick={toggleZoom}
+        className="absolute top-4 right-4 text-white bg-black bg-opacity-50 rounded-full p-2 hover:bg-opacity-75 transition-opacity duration-300"
+      >
+        ✕
+      </button>
+
+    </div>
+  </div>
+)}
     </Layout>
   );
 };
 
-export default SingleProductPage;
+export default SingleProductPage

@@ -64,13 +64,13 @@ const ContactForm = () => {
   return (
     <div className="max-w-md mx-auto">
       
-      <form onSubmit={handleSubmit} className="bg-white shadow-lg border rounded-xl border-teal-200 px-8 pt-6 pb-8 mb-4">
+      <form onSubmit={handleSubmit} className="bg-light-100 px-8 pt-6 pb-8 mb-4">
         <div className="mb-4">
-          <label className="block text-base text-teal-950 font-medium mb-2" htmlFor="name">
+          <label className="block text-base text-teal-950 font-light mb-2" htmlFor="name">
             Name
           </label>
           <input
-            className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
+            className={`appearance-none border w-full py-2 px-3 text-gray-700 font-light leading-tight focus:outline-none focus:shadow-outline ${
               errors.name ? 'border-red-500' : ''
             }`}
             id="name"
@@ -83,11 +83,11 @@ const ContactForm = () => {
           {errors.name && <p className="text-red-500 text-xs italic">{errors.name}</p>}
         </div>
         <div className="mb-4">
-          <label className="block text-base text-teal-950 font-medium mb-2" htmlFor="email">
+          <label className="block text-base text-teal-950 font-light mb-2" htmlFor="email">
             Email
           </label>
           <input
-            className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
+            className={`appearance-none border w-full py-2 px-3 text-gray-700 font-light leading-tight focus:outline-none focus:shadow-outline  ${
               errors.email ? 'border-red-500' : ''
             }`}
             id="email"
@@ -99,12 +99,13 @@ const ContactForm = () => {
           />
           {errors.email && <p className="text-red-500 text-xs italic">{errors.email}</p>}
         </div>
+
         <div className="mb-6">
-          <label className="block text-base text-teal-950 font-medium mb-2" htmlFor="message">
+          <label className="block text-base text-teal-950 font-light mb-2" htmlFor="message">
             Message
           </label>
           <textarea
-            className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline h-32 ${
+            className={`appearance-none border w-full py-2 px-3 text-gray-700 font-light leading-tight focus:outline-none focus:shadow-outline  h-32 ${
               errors.message ? 'border-red-500' : ''
             }`}
             id="message"
@@ -115,9 +116,10 @@ const ContactForm = () => {
           ></textarea>
           {errors.message && <p className="text-red-500 text-xs italic">{errors.message}</p>}
         </div>
+
         <div className="flex items-center justify-between">
           <button
-            className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="bg-green-500 hover:bg-green-700 text-white font-normal py-3 px-8 focus:outline-none focus:shadow-outline"
             type="submit"
           >
             Send Message

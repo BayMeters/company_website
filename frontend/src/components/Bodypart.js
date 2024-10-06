@@ -2,7 +2,7 @@ import React from 'react';
 
 const PartnershipSection = () => {
   return (
-    <div className="flex flex-col lg:flex-row items-center justify-between mx-auto px-10 py-10 gap-20">
+    <div className="flex flex-col lg:flex-row items-center justify-between mx-auto px-8 py-10 gap-20">
 
       <div className="flex-1 max-w-xl">
 
@@ -31,13 +31,15 @@ const PartnershipSection = () => {
             <br/>
         </h2>
 
-        <p className="text-xl text-teal-950 font-extralight text-wrap:pretty mb-14">
+        <p className="text-xl text-teal-950 font-extralight text-wrap:pretty">
           Committed to forging win-win partnerships and becoming a trusted ally for distributors and solution integrators.
         </p>
+
+        {/* <p className=' mb-14'></p>
             
         <a href="https://drive.google.com/file/d/1_x6LxJMQKxtu-NOKI0z6KhJCTKwwx9Ol/view?usp=drive_link" target="_blank" rel="noopener noreferrer" className="bg-green-50 hover:bg-green-600 text-white font-sans font-medium py-3 px-7 rounded-sm transition duration-300">
           Product Catalog
-        </a>
+        </a> */}
 
       </div>
 

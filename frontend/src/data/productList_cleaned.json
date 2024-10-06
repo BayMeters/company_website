@@ -434,6 +434,37 @@
     },
     {
         "Type": "Analysis",
+        "Model": "MDA-PH pH Controller",
+        "Description": "The MDA-PH pH Controller is an advanced, independently developed electronic monitoring device designed for real-time pH and ORP value measurement. It enables remote access via RS485 or current transmission to monitoring rooms for data logging and record keeping. This intelligent online chemical analysis equipment is widely used across industries such as thermal power, chemical fertilizers, metallurgy, environmental protection, pharmaceuticals, biochemistry, food production, and water treatment. It continuously monitors pH/ORP values and temperature, offering precise control for industrial processes.",
+        "Applications": [
+            "Sewage Treatment",
+            "Exhaust Gas Treatment",
+            "Dyeing Wastewater",
+            "Strong Acid and Base Solutions",
+            "Metal Surface Treatment",
+            "Fertigation Systems",
+            "Food Processing",
+            "Power Plants"
+        ],
+        "Photos": [
+            "MDA-U1-2.png",
+            "MDA-U1-3.png",
+            "MDA-U1-1.png"
+        ],
+        "Key_Features": [ 
+            "Easy operation",
+            "Modular board card design for convenient assembly and configuration",
+            "2.4-inch 128x64 pixel display",
+            "Isolated output to reduce signal interference",
+            "Isolated RS485 communication",
+            "Capable of pH/ORP measurement, temperature measurement, upper/lower limit control, transmission output, and RS485 communication",
+            "Configurable manual and automatic temperature offset function",
+            "Configurable upper/lower limit alarm and delay",
+            "Configurable buzzer and LCD backlight switch"
+        ]     
+    },
+    {
+        "Type": "Analysis",
         "Model": "MDA-EC Conductivity Meter",
         "Description": "The SUP-MDA-EC model is designed for the precise measurement and control of electrolytic conductivity, resistivity, or Total Dissolved Solids (TDS). Conductivity depends on ion concentration, ionic charge, and ion mobility. When an electrical potential is applied across electrodes immersed in a solution, ions in the water conduct current. This system consists of a microprocessor-based controller paired with a conductivity probe. The meter is compatible with 3-electrode cells (K=0.01, 0.1, and 1.0) and features temperature compensation using an NTC10K or PT1000 probe. Automatic temperature compensation adjusts based on the measured variable, ensuring high accuracy. Adjustments to current outputs, alarm relays, and calibration for both conductivity and temperature inputs can be easily made via the membrane keypad on the controller.",
         "Applications": [
@@ -461,37 +492,6 @@
             "Low maintenance requirements",
             "Ensures high product quality"
         ]
-    },
-    {
-        "Type": "Analysis",
-        "Model": "MDA-PH pH Controller",
-        "Description": "The MDA-PH pH Controller is an advanced, independently developed electronic monitoring device designed for real-time pH and ORP value measurement. It enables remote access via RS485 or current transmission to monitoring rooms for data logging and record keeping. This intelligent online chemical analysis equipment is widely used across industries such as thermal power, chemical fertilizers, metallurgy, environmental protection, pharmaceuticals, biochemistry, food production, and water treatment. It continuously monitors pH/ORP values and temperature, offering precise control for industrial processes.",
-        "Applications": [
-            "Sewage Treatment",
-            "Exhaust Gas Treatment",
-            "Dyeing Wastewater",
-            "Strong Acid and Base Solutions",
-            "Metal Surface Treatment",
-            "Fertigation Systems",
-            "Food Processing",
-            "Power Plants"
-        ],
-        "Photos": [
-            "MDA-PH-1.png",
-            "MDA-PH-2.png",
-            "MDA-PH-3.png"
-        ],
-        "Key_Features": [ 
-            "Easy operation",
-            "Modular board card design for convenient assembly and configuration",
-            "2.4-inch 128x64 pixel display",
-            "Isolated output to reduce signal interference",
-            "Isolated RS485 communication",
-            "Capable of pH/ORP measurement, temperature measurement, upper/lower limit control, transmission output, and RS485 communication",
-            "Configurable manual and automatic temperature offset function",
-            "Configurable upper/lower limit alarm and delay",
-            "Configurable buzzer and LCD backlight switch"
-        ]     
     },
     {
         "Type": "Analysis",

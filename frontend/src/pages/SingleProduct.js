@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 import Layout from '../components/Layout.js';
 import ProductSearch from '../components/ProductQuery.js';
@@ -33,6 +33,12 @@ const SingleProductPage = () => {
     setIsZoomOpen(!isZoomOpen);
   };
 
+  const handleOutsideClick = useCallback((e) => {
+    if (e.target === e.currentTarget) {
+      toggleZoom();
+    }
+  }, [toggleZoom]);
+
   if (!product) {
     return (
       <Layout>
@@ -60,7 +66,7 @@ const SingleProductPage = () => {
                     <img 
                       src={`/Pictures/${product.Photos[currentImageIndex]}`}
                       alt={`${product.Model} - Image ${currentImageIndex + 1}`} 
-                      className="w-5/6 h-auto bg-white m-2 cursor-pointer"
+                      className="w-5/6 h-auto bg-white m-2 cursor-zoom-in"
                     />
                   </div>
                   {product.Photos.length > 1 && (
@@ -123,43 +129,53 @@ const SingleProductPage = () => {
 
       {/* Custom Zoom Modal */}
       {isZoomOpen && (
-  <div className="fixed inset-0 bg-black bg-opacity-15 flex items-center justify-center z-50">
-    <div className="relative max-w-[90vw] max-h-[90vh] flex items-center justify-center bg-white rounded-lg shadow-2xl">
-      <img 
-        src={`/Pictures/${product.Photos[currentImageIndex]}`}
-        alt={`${product.Model} - Zoomed Image ${currentImageIndex + 1}`} 
-        className="w-3/4 h-auto "
-      />
+        <div 
+          className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 cursor-zoom-out"
+          onClick={handleOutsideClick}
+        >
+          <div 
+            className="relative w-[70vw] h-[90vh] flex items-center justify-center bg-white rounded-lg shadow-2xl"
+            onClick={toggleZoom}
+          >
+            <img 
+              src={`/Pictures/${product.Photos[currentImageIndex]}`}
+              alt={`${product.Model} - Zoomed Image ${currentImageIndex + 1}`} 
+              className="max-w-full max-h-full object-contain"
+            />
 
-      <button onClick={(e) => {
-          e.stopPropagation();
-          prevImage();
-        }} 
-        className="absolute left-4 text-white bg-black bg-opacity-50 rounded-full p-2 hover:bg-opacity-75 transition-opacity duration-300"
-      >
-        &#8249;
-      </button>
+            {product.Photos.length > 1 && (
+              <>
+                <button 
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    prevImage();
+                  }} 
+                  className="absolute left-4 text-white text-2xl bg-black bg-opacity-50 rounded-full p-4 py-6 hover:bg-opacity-75 transition-opacity duration-300"
+                >
+                  &#8249;
+                </button>
 
-      <button 
-        onClick={(e) => {
-          e.stopPropagation();
-          nextImage();
-        }} 
-        className="absolute right-4 text-white bg-black bg-opacity-50 rounded-full p-2 hover:bg-opacity-75 transition-opacity duration-300"
-      >
-        &#8250;
-      </button>
+                <button 
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    prevImage();
+                  }} 
+                  className="absolute right-4 text-white text-2xl bg-black bg-opacity-50 rounded-full p-4 py-6 hover:bg-opacity-75 transition-opacity duration-300"
+                >
+                  &#8250;
+                </button>
+              </>
+            )}
 
-      <button 
-        onClick={toggleZoom}
-        className="absolute top-4 right-4 text-white bg-black bg-opacity-50 rounded-full p-2 hover:bg-opacity-75 transition-opacity duration-300"
-      >
-        ✕
-      </button>
-
-    </div>
-  </div>
-)}
+            {/* <button 
+              onClick={toggleZoom}
+              className="absolute top-4 right-4 text-white bg-black bg-opacity-50 rounded-full p-2 px-3 hover:bg-opacity-75 transition-opacity duration-300"
+            >
+              ✕
+            </button> */}
+          </div>
+        </div>
+      )}
     </Layout>
   );
 };

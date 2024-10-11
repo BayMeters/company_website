@@ -8,9 +8,10 @@ const WebsiteLayout = () => {
   return (
     <Layout>
       <div className="min-h-screen"> 
-        <div className="container mx-auto">
+        <div className="container mx-auto px-4 sm:px-0">
           <PartnershipSection />
         </div>
+        <div className="w-full border-t border-gray-100 mt-4 mb-12 lg:hidden"></div>
         <div className="container mx-auto px-4">
           <ProductShowcase />
         </div>

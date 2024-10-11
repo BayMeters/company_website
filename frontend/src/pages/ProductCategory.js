@@ -16,7 +16,7 @@ const ProductCategoryPage = () => {
 
   return (
     <Layout>
-      <div className="container mx-auto sm:px-8 lg:px-24 py-8 pb-16">
+      <div className="container mx-auto px-10 lg:px-24 py-8 pb-16">
         <Breadcrumbs />
         <h1 className="text-6xl font-anek font-medium text-green-50 mb-8">{category} Products</h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

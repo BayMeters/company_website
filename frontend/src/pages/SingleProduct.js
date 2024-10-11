@@ -51,80 +51,79 @@ const SingleProductPage = () => {
 
   return (
     <Layout>
-      <div className="container mx-auto sm:px-8 lg:px-24 py-8">
+      <div className="container mx-auto px-8 lg:px-24 py-8">
         <Breadcrumbs /> 
-        <h2 className="text-5xl font-anek font-medium text-green-50 mb-10">{product.Model}</h2>
-        <div className="flex-row">
-
-          <div className='flex gap-16'>
-            
-            {/* Image Gallery */}
-            <div className="relative min-w-96 h-full rounded-md border border-gray-200  cursor-zoom-in" onClick={toggleZoom}>
-              {product.Photos && product.Photos.length > 0 ? (
-                <>
-                  <div className="flex justify-center">
-                    <img 
-                      src={`/Pictures/${product.Photos[currentImageIndex]}`}
-                      alt={`${product.Model} - Image ${currentImageIndex + 1}`} 
-                      className="w-5/6 h-auto bg-white m-2 cursor-zoom-in"
-                    />
-                  </div>
-                  {product.Photos.length > 1 && (
-                    <div className="absolute inset-0 flex items-center justify-between m-4">
-                      <button 
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          prevImage();
-                        }} 
-                        className="bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition-opacity duration-300"
-                      >
-                        &#8249;
-                      </button>
-                      <button 
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          prevImage();
-                        }} 
-                        className="bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition-opacity duration-300"
-                      >
-                        &#8250;
-                      </button>
-                    </div>
-                  )}
-                </>
-              ) : (
-                <div className="flex justify-center items-center h-full">
-                 <img src='/Assets/coming-soon.png' alt='Coming Soon' className="w-5/6 h-auto bg-white m-2" />
+        <h2 className="text-4xl sm:text-5xl font-anek font-medium text-green-50 mb-6 sm:mb-10">{product.Model}</h2>
+        <div className="flex flex-col md:flex-row gap-8 md:gap-16">
+          
+          {/* Image Gallery */}
+          <div className="w-full md:w-1/2 lg:w-2/5 relative rounded-md border border-gray-200 cursor-zoom-in" onClick={toggleZoom}>
+            {product.Photos && product.Photos.length > 0 ? (
+              <>
+                <div className="flex justify-center">
+                  <img 
+                    src={`/Pictures/${product.Photos[currentImageIndex]}`}
+                    alt={`${product.Model} - Image ${currentImageIndex + 1}`} 
+                    className="w-full h-auto bg-white m-2 cursor-zoom-in"
+                  />
                 </div>
-              )}
-            </div>
-
-            {/* Product Description */}
-            <p className="leading-relaxed text-xl text-teal-950 font-extralight mb-4">{product.Description}</p>
+                {product.Photos.length > 1 && (
+                  <div className="absolute inset-0 flex items-center justify-between m-4">
+                    <button 
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        prevImage();
+                      }} 
+                      className="bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition-opacity duration-300"
+                    >
+                      &#8249;
+                    </button>
+                    <button 
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        prevImage();
+                      }} 
+                      className="bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition-opacity duration-300"
+                    >
+                      &#8250;
+                    </button>
+                  </div>
+                )}
+              </>
+            ) : (
+              <div className="flex justify-center items-center h-full">
+               <img src='/Assets/coming-soon.png' alt='Coming Soon' className="w-full h-auto bg-white m-2" />
+              </div>
+            )}
           </div>
-          
 
-          <div className='flex flex-col md:flex-row gap-24 my-16'>
-            <div className="flex-1">
-              <h2 className="text-4xl font-anek font-medium text-green-50 mb-4">Key Features</h2>
-              <ul className="list-disc pl-5 text-lg text-teal-950 font-extralight">
-                {product.Key_Features.map((feature, index) => (
-                  <li key={index}>{feature}</li>
-                ))}
-              </ul>
-            </div>
-
-            <div className='flex-1'>
-              <h2 className="text-4xl font-anek font-medium text-green-50 mb-4">Applications</h2>
-              <ul className="list-disc pl-5 text-lg text-teal-950 font-extralight">
-                {product.Applications.map((application, index) => (
-                  <li key={index}>{application}</li>
-                ))}
-              </ul>
-            </div>            
+          {/* Product Description */}
+          <div className="w-full md:w-1/2 lg:w-3/5">
+            <p className="leading-relaxed text-lg sm:text-xl text-teal-950 font-extralight mb-4">{product.Description}</p>
           </div>
-          
         </div>
+        
+
+        <div className='flex flex-col lg:flex-row gap-8 lg:gap-24 my-8 lg:my-16'>
+          <div className="flex-1">
+            <h2 className="text-3xl sm:text-4xl font-anek font-medium text-green-50 mb-4">Key Features</h2>
+            <ul className="list-disc pl-5 text-base sm:text-lg text-teal-950 font-extralight">
+              {product.Key_Features.map((feature, index) => (
+                <li key={index}>{feature}</li>
+              ))}
+            </ul>
+          </div>
+
+          <div className='flex-1'>
+            <h2 className="text-3xl sm:text-4xl font-anek font-medium text-green-50 mb-4">Applications</h2>
+            <ul className="list-disc pl-5 text-base sm:text-lg text-teal-950 font-extralight">
+              {product.Applications.map((application, index) => (
+                <li key={index}>{application}</li>
+              ))}
+            </ul>
+          </div>            
+        </div>
+        
       </div> 
 
       {/* Custom Zoom Modal */}
@@ -134,7 +133,7 @@ const SingleProductPage = () => {
           onClick={handleOutsideClick}
         >
           <div 
-            className="relative w-[70vw] h-[90vh] flex items-center justify-center bg-white rounded-lg shadow-2xl"
+            className="relative w-[90vw] h-[90vh] md:w-[70vw] flex items-center justify-center bg-white rounded-lg shadow-2xl"
             onClick={toggleZoom}
           >
             <img 
@@ -167,12 +166,6 @@ const SingleProductPage = () => {
               </>
             )}
 
-            {/* <button 
-              onClick={toggleZoom}
-              className="absolute top-4 right-4 text-white bg-black bg-opacity-50 rounded-full p-2 px-3 hover:bg-opacity-75 transition-opacity duration-300"
-            >
-              ✕
-            </button> */}
           </div>
         </div>
       )}

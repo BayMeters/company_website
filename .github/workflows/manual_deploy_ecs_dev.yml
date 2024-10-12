@@ -13,7 +13,7 @@ env:
   ECR_REGISTRY: 515308131221.dkr.ecr.us-east-1.amazonaws.com
   ECR_REPOSITORY: baymeters/company_website
   ECS_CLUSTER: arn:aws:ecs:us-east-1:515308131221:cluster/company_website_runner
-  ECS_SERVICE: arn:aws:ecs:us-east-1:515308131221:service/company_website_runner/website-runner-service-test
+  ECS_SERVICE: website-runner-service-test
   ECS_TASK_DEFINITION: baymeter-website-test
   CONTAINER_NAME: baymeter-website-container
 
@@ -49,15 +49,32 @@ jobs:
           image: ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ github.event.inputs.image_tag }}
 
       - name: Deploy to Amazon ECS
-        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
-        with:
-          task-definition: ${{ steps.task-def.outputs.task-definition }}
-          service: ${{ env.ECS_SERVICE }}
-          cluster: ${{ env.ECS_CLUSTER }}
-          wait-for-service-stability: true
+        run: |
+          SERVICE_NAME=${{ env.ECS_SERVICE }}
+          CLUSTER_NAME=$(echo ${{ env.ECS_CLUSTER }} | awk -F'/' '{print $NF}')
+          
+          # Check if the service exists
+          if aws ecs describe-services --cluster $CLUSTER_NAME --services $SERVICE_NAME --query "services[?status=='ACTIVE']" --output text | grep -q $SERVICE_NAME; then
+            echo "Updating existing service: $SERVICE_NAME"
+            aws ecs update-service \
+              --cluster ${{ env.ECS_CLUSTER }} \
+              --service $SERVICE_NAME \
+              --task-definition ${{ steps.task-def.outputs.task-definition }} \
+              --force-new-deployment
+          else
+            echo "Creating new service: $SERVICE_NAME"
+            aws ecs create-service \
+              --cluster ${{ env.ECS_CLUSTER }} \
+              --service-name $SERVICE_NAME \
+              --task-definition ${{ steps.task-def.outputs.task-definition }} \
+              --desired-count 1 \
+              --launch-type FARGATE \
+              --network-configuration "awsvpcConfiguration={subnets=[subnet-12345678,subnet-87654321],securityGroups=[sg-12345678]}" \
+              --wait-for-service-stability
+          fi
 
       - name: Print deployment info
         run: |
           echo "Deployed image ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ github.event.inputs.image_tag }} to ECS"
           echo "Cluster: ${{ env.ECS_CLUSTER }}"
-          echo "Service: ${{ env.ECS_SERVICE }}"
+          echo "Service: $SERVICE_NAME"

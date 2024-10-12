@@ -3,7 +3,7 @@ import { MapPin, Phone, Mail } from 'lucide-react';
 
 const ContactInfo = () => {
     return (
-      <main className="flex-grow container -mx-10">
+      <main className="flex-grow container">
         <h1 className="text-6xl font-anek font-medium text-green-50 mb-2">Contact Us</h1>
 
         <div className="bg-white p-6 mb-10 text-xl text-teal-950 font-extralight"> 

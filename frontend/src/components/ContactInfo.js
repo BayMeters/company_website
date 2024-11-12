@@ -16,9 +16,8 @@ const ContactInfo = () => {
               <MapPin className="mr-2 mt-1 text-gray-600" size={20} />
               <div className="space-y-3">
                 <p className="font-medium">BayMeters LLC</p>
-                <p>Corporate Commons</p>
-                <p>6200 Stoneridge Mall Road, 3rd Floor</p>
-                <p>Pleasanton, CA 94568</p>
+                <p>160 E Tasman Drive</p>
+                <p>San Jose, CA 95134</p>
               </div>
             </div>
 

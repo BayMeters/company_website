@@ -19,9 +19,8 @@ const Footer = () => {
                 </Link>
             <p className='text-white text-sm font-extralight mb-5'>
               BayMeters LLC<br/>
-              Corporate Commons<br/>
-              6200 Stoneridge Mall Road, 3rd Floor<br/>
-              Pleasanton, CA 94568<br/>
+              160 E Tasman Drive<br/>
+              San Jose, CA 95134<br/>
               866 305-7799
             </p>
           </div>

@@ -1,10 +1,7 @@
-// ProductQuery.js
 import productData from '../data/productList_cleaned.json';
 
 const ProductSearch = ({ type = '', model = '' }) => {
   return new Promise((resolve) => {
-    // Simulate a small network delay (optional, you can remove setTimeout if you don't want any delay)
-    // setTimeout(() => {
       let filteredResults = productData;
       
       if (type) {
@@ -21,7 +18,6 @@ const ProductSearch = ({ type = '', model = '' }) => {
       
       console.log(filteredResults);
       resolve(filteredResults);
-    // }, 100); // Small delay to prevent flash of loading state
   });
 };
 

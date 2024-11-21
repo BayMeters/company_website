@@ -47,7 +47,7 @@ const ContactForm = () => {
     if (validateForm()) {
       setSubmitStatus(null);
       try {
-        const response = await axios.post('/api/submit-to-notion', formData);
+        const response = await axios.post('/api/notion-post-comment', formData);
         console.log('Form submitted:', response.data);
         setSubmitStatus('success');
         setFormData({ name: '', email: '', message: '' });

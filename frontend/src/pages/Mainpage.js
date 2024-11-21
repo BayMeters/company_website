@@ -1,13 +1,40 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Layout from '../components/Layout.js';
 import PartnershipSection from '../components/Bodypart.js';
 import ProductShowcase from '../components/ProductShowcase.js';
 
-
 const WebsiteLayout = () => {
+  const [catalogUrl, setCatalogUrl] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchCatalogUrl = async () => {
+      try {
+        const response = await fetch('/api/get-product-catalog');
+        const data = await response.json();
+        
+        if (data.url) {
+          setCatalogUrl(data.url);
+        } else {
+          // Fallback URL in case API fails
+          setCatalogUrl('https://drive.google.com/file/d/11iH8UShgsg9jPllvIJntwPwZ2mmdJeSc/view?usp=sharing');
+          console.warn('Failed to fetch catalog URL from API, using fallback URL');
+        }
+      } catch (error) {
+        console.error('Error fetching catalog URL:', error);
+        // Fallback URL in case of error
+        setCatalogUrl('https://drive.google.com/file/d/11iH8UShgsg9jPllvIJntwPwZ2mmdJeSc/view?usp=sharing');
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchCatalogUrl();
+  }, []);
+
   return (
     <Layout>
-      <div className="min-h-screen"> 
+      <div className="min-h-screen">
         <div className="container mx-auto px-4 sm:px-0">
           <PartnershipSection />
         </div>
@@ -16,14 +43,22 @@ const WebsiteLayout = () => {
           <ProductShowcase />
         </div>
         <div className="container mx-auto px-8 pb-8">
-          <p className="text-xl text-teal-950 font-extralight text-wrap:pretty mb-8">
-            You can download our <a href="https://drive.google.com/file/d/11iH8UShgsg9jPllvIJntwPwZ2mmdJeSc/view?usp=sharing" target="_blank" rel="noopener noreferrer" className='text-green-50 transition-colors duration-300 hover:font-semibold hover:text-green-600'>
-            product catalog</a> to learn about our full product line.
-          </p>
-          {/* <a href="https://drive.google.com/file/d/1_x6LxJMQKxtu-NOKI0z6KhJCTKwwx9Ol/view?usp=drive_link" target="_blank" rel="noopener noreferrer" className=" bg-green-50 hover:bg-green-600 text-white font-sans font-medium py-3 px-7 rounded-sm transition duration-300">
-            Product Catalog
-          </a> 
-          <div className='mb-6'></div> */}
+          {isLoading ? (
+            <p className="text-xl text-teal-950 font-extralight">Loading...</p>
+          ) : (
+            <p className="text-xl text-teal-950 font-extralight text-wrap:pretty mb-8">
+              You can download our{' '}
+              <a 
+                href={catalogUrl}
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className='text-green-50 transition-colors duration-300 hover:font-semibold hover:text-green-600'
+              >
+                product catalog
+              </a>{' '}
+              to learn about our full product line.
+            </p>
+          )}
         </div>
       </div>
     </Layout>

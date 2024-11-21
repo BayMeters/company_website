@@ -6,7 +6,7 @@ const router = express.Router();
 const NOTION_API_TOKEN = "secret_quv0STLvuAeZ4qOldmv0w6CFWnM50kkIMa3i84oJoaK";
 const DATABASE_ID = "fa51554a5d6243a9b4be0a1b1e7eb3e6";
 
-router.post('/submit-to-notion', async (req, res) => {
+router.post('/notion-post-comment', async (req, res) => {
   try {
     const formData = req.body; // Assuming the form data is sent in the request body
 

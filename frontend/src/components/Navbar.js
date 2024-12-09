@@ -1,12 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Dialog,
   DialogPanel,
-  Popover,
-  PopoverButton,
   PopoverGroup,
-  PopoverPanel,
   Disclosure,
   DisclosureButton,
   DisclosurePanel,
@@ -26,19 +23,54 @@ const BayMetersLogo = () => (
 );
 
 export default function Navbar() {
-
   const ProductCategory = ProductList();
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const toggleMobileMenu = () => setMobileMenuOpen(!mobileMenuOpen)
+  const toggleMobileMenu = () => setMobileMenuOpen(!mobileMenuOpen);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const buttonRef = useRef(null);
+  const dropdownRef = useRef(null);
+  let timeoutRef = useRef(null);
+
+  const handleMouseEnter = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+    setIsOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    timeoutRef.current = setTimeout(() => {
+      setIsOpen(false);
+    }, 100); // Small delay to prevent flickering when moving between button and dropdown
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        buttonRef.current && 
+        dropdownRef.current && 
+        !buttonRef.current.contains(event.target) && 
+        !dropdownRef.current.contains(event.target)
+      ) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
 
   return (
     <header className="bg-white/80 backdrop-blur-sm sticky top-0 z-50">
       <link href="https://fonts.googleapis.com/css2?family=Anek+Odia:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet"></link>
 
       <nav aria-label="Global" className="h-16 mx-auto flex max-w-full items-center justify-between p-6 lg:px-10">
-        
         <div className="flex flex-1 lg:hidden">
-
           <Link to="/" className="pt-2">
             <span className="sr-only">Your Company</span>
             <BayMetersLogo />
@@ -46,66 +78,80 @@ export default function Navbar() {
         </div>
 
         <PopoverGroup className="hidden lg:flex lg:gap-x-16">
-
-        <Link to="/" className="pt-2">
+          <Link to="/" className="pt-2">
             <span className="sr-only">Your Company</span>
             <BayMetersLogo />
-        </Link>
+          </Link>
 
-        {/* <a href="/comingsoon" target="_blank" rel="noopener noreferrer" className="pl-3 pt-2.5 text-lg font-extralight leading-6 text-gray-900">
-          Quick Pay
-        </a> */}
-
-        <Popover className="relative">
-          <PopoverButton className="flex items-center gap-x-1 pt-2.5 leading-6 text-lg font-extralight text-gray-700 focus:outline-none">
-            Product
-            <ChevronDownIcon aria-hidden="true" className="h-5 w-5 flex-none text-gray-600" />
-          </PopoverButton>
-          <PopoverPanel transition 
-          className="absolute left-0 z-50 mt-5 w-screen max-w-sm overflow-hidden bg-white shadow-2xl rounded-md transition data-[closed]:translate-y-1 data-[closed]:opacity-0 data-[enter]:duration-200 data-[leave]:duration-150 data-[enter]:ease-out data-[leave]:ease-in">
-            
-            <div className="p-5">
-              {ProductCategory.map((item) => (
-                <Link 
-                  key={item} 
-                  to={`/products/${encodeURIComponent(item)}`}
-                  className="group relative flex items-center justify-between gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-green-100"
-                >
-                  <span className="text-lg font-extralight text-gray-700">{item}</span>
-                  <ChevronRightIcon aria-hidden="true" className="h-5 w-5 flex-none text-gray-600" />
-                </Link>
-              ))}
+          <div className="relative"
+          ref={buttonRef}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}>
+            <div 
+              
+              className="flex items-center cursor-pointer"
+            >
+              <Link
+                to="/products"
+                className="pl-3 pt-2.5 text-lg font-extralight leading-6 text-gray-900 hover:font-normal duration-100"
+              >
+                Product
+              </Link>
+              <div className="ml-1 pt-2.5">
+                <ChevronDownIcon aria-hidden="true" className="h-5 w-5 flex-none text-gray-600" />
+              </div>
             </div>
-          </PopoverPanel>
-        </Popover>
 
-        <Link to = "/about" className="pl-3 pt-2.5 text-lg font-extralight leading-6 text-gray-900">
-          About
-        </Link>
-      
-      </PopoverGroup>
-      
-      <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <Link to ="/contact" className="text-medium font-normal leading-6 text-white p-2 px-4 bg-teal-900 hover:bg-teal-600 rounded-sm">
-          Contact Us </Link>
-      </div>
+            {isOpen && (
+              <div 
+                ref={dropdownRef}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+                className="absolute left-0 z-50 mt-5 w-screen max-w-sm overflow-hidden bg-white shadow-2xl rounded-md 
+                          transition-all duration-200 ease-out"
+              >
+                <div className="p-3">
+                  {ProductCategory.map((item) => (
+                    <Link 
+                      key={item} 
+                      to={`/products/${encodeURIComponent(item)}`}
+                      className="group relative flex items-center justify-between gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-green-100"
+                    >
+                      <span className="text-lg font-extralight text-gray-700">{item}</span>
+                      <ChevronRightIcon aria-hidden="true" className="h-5 w-5 flex-none text-gray-600" />
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
 
+          <Link to="/about" className="pl-3 pt-2.5 text-lg font-extralight leading-6 text-gray-900 hover:font-normal duration-100">
+            About
+          </Link>
+        </PopoverGroup>
 
-      <div className="flex lg:hidden">
-        <button
-          type="button"
-          onClick={toggleMobileMenu}
-          className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
-        >
-          <span className="sr-only">{mobileMenuOpen ? 'Close menu' : 'Open menu'}</span>
-          {mobileMenuOpen ? (
-            <XMarkIcon aria-hidden="true" className="h-6 w-6" />
-          ) : (
-            <Bars3Icon aria-hidden="true" className="h-6 w-6" />
-          )}
-        </button>
-      </div>
+        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+          <Link to="/contact" className="text-medium font-normal leading-6 text-white p-2 px-4 bg-teal-900 hover:bg-teal-600 rounded-sm">
+            Contact Us
+          </Link>
+        </div>
 
+        {/* Mobile menu button */}
+        <div className="flex lg:hidden">
+          <button
+            type="button"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+          >
+            <span className="sr-only">{mobileMenuOpen ? 'Close menu' : 'Open menu'}</span>
+            {mobileMenuOpen ? (
+              <XMarkIcon aria-hidden="true" className="h-6 w-6" />
+            ) : (
+              <Bars3Icon aria-hidden="true" className="h-6 w-6" />
+            )}
+          </button>
+        </div>
       </nav>
 
       {/* Mobile View */}

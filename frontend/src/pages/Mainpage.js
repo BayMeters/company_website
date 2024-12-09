@@ -42,7 +42,7 @@ const WebsiteLayout = () => {
         <div className="container mx-auto px-4">
           <ProductShowcase />
         </div>
-        <div className="container mx-auto px-8 pb-8">
+        {/* <div className="container mx-auto px-8 pb-8">
           {isLoading ? (
             <p className="text-xl text-teal-950 font-extralight">Loading...</p>
           ) : (
@@ -59,7 +59,7 @@ const WebsiteLayout = () => {
               to learn about our full product line.
             </p>
           )}
-        </div>
+        </div> */}
       </div>
     </Layout>
   );

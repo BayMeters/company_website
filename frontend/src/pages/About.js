@@ -17,7 +17,7 @@ const AboutPage = () => {
           </div>
         </section>
         
-        <div className='flex-row gap-12'>
+        {/* <div className='flex-row gap-12'>
           <h2 className="text-6xl font-anek font-medium text-green-50 mb-2">About Supmea</h2>
           <div className="bg-white p-8 text-xl text-teal-950 font-extralight">
             <p className="mb-6 leading-relaxed">
@@ -27,7 +27,7 @@ const AboutPage = () => {
               Supmea is renowned for its advanced electromagnetic flowmeter calibration system and robust research and development capabilities. The company offers a full range of instruments for flow, level, analytical measurement, pressure, and temperature, serving industries such as water and wastewater, energy, chemicals, life sciences, and food and beverage.
             </p>
           </div>
-        </div>
+        </div> */}
       </div>
     </Layout>
   );

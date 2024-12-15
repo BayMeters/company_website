@@ -14,6 +14,9 @@ module.exports = {
         },
         'light':{
           '100':'#f9f7f4'
+        },
+        'yellow':{
+          '100':'#ffc83a'
         }
       },
       fontFamily: {
@@ -26,3 +29,4 @@ module.exports = {
   },
   plugins: [],
 }
+

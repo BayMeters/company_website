@@ -1,11 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
-const BayMetersLogo = () => (
-    <div className="flex items-center">
-      <span className="text-green-50 text-3xl font-anek mb-4">BayMeters</span>  
-    </div>
-  );
+import BayMetersLogo from './BayMetersLogo';
 
 const Footer = () => {
   return (
@@ -15,7 +10,7 @@ const Footer = () => {
           <div className="flex flex-col flex-auto min-w-44">
             <Link to="/" >
                     <span className="sr-only">Your Company</span>
-                    <BayMetersLogo />
+                    <div className='mb-4'><BayMetersLogo/></div>
                 </Link>
             <p className='text-white text-sm font-extralight mb-5'>
               BayMeters LLC<br/>
